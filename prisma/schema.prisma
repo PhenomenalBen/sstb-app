@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+  engineType = "node"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── USERS (Admins & Volunteers with dashboard access) ───────────────────────
+model User {
+  id             Int      @id @default(autoincrement())
+  name           String
+  email          String   @unique
+  phone          String?
+  password_hash  String
+  role           String   // "admin" | "volunteer"
+  volunteer_type String?  // "finance" | "other"
+  created_at     DateTime @default(now())
+
+  volunteer      Volunteer?
+}
+
+// ─── STUDENT APPLICATIONS (public, no login) ─────────────────────────────────
+model Application {
+  id                  Int      @id @default(autoincrement())
+  full_name           String
+  age                 Int
+  email               String
+  phone               String?
+  level_of_education  String
+  courses_applied     String[] // ["computer", "english", "math"]
+  motivation_text     String
+  status              String   @default("pending") // "pending" | "accepted" | "rejected"
+  submitted_at        DateTime @default(now())
+
+  student             Student?
+}
+
+// ─── STUDENTS (accepted applicants) ──────────────────────────────────────────
+model Student {
+  id                 Int      @id @default(autoincrement())
+  full_name          String
+  age                Int
+  email              String   @unique
+  phone              String?
+  level_of_education String
+  courses            String[] // ["computer", "english", "math"]
+  start_date         DateTime
+
+  application_id     Int         @unique
+  application        Application @relation(fields: [application_id], references: [id])
+
+  balance            PersonBalance?
+  transactions       Transaction[]
+}
+
+// ─── VOLUNTEER APPLICATIONS (public, no login) ────────────────────────────────
+model VolunteerApplication {
+  id                 Int      @id @default(autoincrement())
+  full_name          String
+  email              String
+  phone              String?
+  level_of_education String
+  skills             String
+  preferred_courses  String[] // ["computer", "english", "math", "none"]
+  availability       String   // "remote" | "onsite"
+  motivation_text    String
+  status             String   @default("pending") // "pending" | "accepted" | "rejected"
+  submitted_at       DateTime @default(now())
+
+  volunteer          Volunteer?
+}
+
+// ─── VOLUNTEERS (accepted) ────────────────────────────────────────────────────
+model Volunteer {
+  id                 Int      @id @default(autoincrement())
+  full_name          String
+  level_of_education String
+  courses            String[] // ["computer", "english", "math", "none"]
+  availability       String   // "remote" | "onsite"
+  position           String
+  start_date         DateTime
+
+  application_id     Int                  @unique
+  application        VolunteerApplication @relation(fields: [application_id], references: [id])
+
+  user_id            Int?                 @unique
+  user               User?                @relation(fields: [user_id], references: [id])
+
+  assignments        Assignment[]
+  balance            PersonBalance?
+  transactions       Transaction[]
+}
+
+// ─── COURSES ──────────────────────────────────────────────────────────────────
+model Course {
+  id          Int    @id @default(autoincrement())
+  name        String @unique // "Computer" | "English" | "Math"
+  description String?
+
+  assignments Assignment[]
+}
+
+// ─── ASSIGNMENTS (volunteer → course) ────────────────────────────────────────
+model Assignment {
+  id            Int      @id @default(autoincrement())
+  assigned_date DateTime @default(now())
+
+  volunteer_id  Int
+  volunteer     Volunteer @relation(fields: [volunteer_id], references: [id])
+
+  course_id     Int
+  course        Course    @relation(fields: [course_id], references: [id])
+}
+
+// ─── PERSON BALANCES ──────────────────────────────────────────────────────────
+model PersonBalance {
+  id             Int     @id @default(autoincrement())
+  person_type    String  // "student" | "volunteer"
+  total_expected Decimal @db.Decimal(10, 2)
+  total_paid     Decimal @default(0.00) @db.Decimal(10, 2)
+  balance_due    Decimal @db.Decimal(10, 2)
+
+  student_id     Int?      @unique
+  student        Student?  @relation(fields: [student_id], references: [id])
+
+  volunteer_id   Int?      @unique
+  volunteer      Volunteer? @relation(fields: [volunteer_id], references: [id])
+}
+
+// ─── TRANSACTIONS ─────────────────────────────────────────────────────────────
+model Transaction {
+  id             Int      @id @default(autoincrement())
+  person_type    String   // "student" | "volunteer"
+  direction      String   // "in" | "out"
+  amount         Decimal  @db.Decimal(10, 2)
+  description    String
+  payment_date   DateTime @default(now())
+  payment_method String   // "cash" | "bank transfer" | "card"
+  receipt_id     String?
+  notes          String?
+  created_at     DateTime @default(now())
+
+  student_id     Int?
+  student        Student?   @relation(fields: [student_id], references: [id])
+
+  volunteer_id   Int?
+  volunteer      Volunteer? @relation(fields: [volunteer_id], references: [id])
+}
