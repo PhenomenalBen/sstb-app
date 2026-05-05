@@ -1,0 +1,19 @@
+import { auth } from "@/lib/auth"
+import { redirect } from "next/navigation"
+import { PrismaClient } from "@prisma/client"
+import { PrismaPg } from "@prisma/adapter-pg"
+import ApplicationsClient from "./ApplicationsClient"
+
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
+const prisma = new PrismaClient({ adapter })
+
+export default async function ApplicationsPage() {
+  const session = await auth()
+  if (!session || (session.user as any)?.role !== "admin") redirect("/login")
+
+  const applications = await prisma.application.findMany({
+    orderBy: { submitted_at: "desc" },
+  })
+
+  return <ApplicationsClient applications={applications} />
+}

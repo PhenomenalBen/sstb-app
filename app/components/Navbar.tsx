@@ -185,8 +185,23 @@ export default function Navbar() {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
+              href="/volunteer"
+              className="text-sm font-semibold px-4 py-2 rounded-lg border-2 transition-all duration-300"
+              style={{ borderColor: "#00BCD4", color: "#00BCD4" }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "#00BCD4"
+                ;(e.currentTarget as HTMLElement).style.color = "#ffffff"
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"
+                ;(e.currentTarget as HTMLElement).style.color = "#00BCD4"
+              }}
+            >
+              Volunteer
+            </Link>
+            <Link
               href="/apply"
-              className="text-sm font-semibold px-5 py-2.5 rounded-lg text-white transition-all duration-300"
+              className="text-sm font-semibold px-4 py-2 rounded-lg text-white transition-all duration-300"
               style={{ backgroundColor: "#dc2626" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.backgroundColor = "#b91c1c"
@@ -203,7 +218,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/login"
-              className="text-sm font-semibold px-5 py-2.5 rounded-lg border-2 transition-all duration-300"
+              className="text-sm font-semibold px-4 py-2 rounded-lg border-2 transition-all duration-300"
               style={{ borderColor: "#dc2626", color: "#dc2626" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.backgroundColor = "#dc2626"
@@ -290,8 +305,16 @@ export default function Navbar() {
 
             <div className="flex flex-col gap-3 pt-4">
               <Link
+                href="/volunteer"
+                className="text-center text-sm font-semibold px-4 py-2 rounded-lg border-2"
+                style={{ borderColor: "#00BCD4", color: "#00BCD4" }}
+                onClick={() => setMenuOpen(false)}
+              >
+                Volunteer
+              </Link>
+              <Link
                 href="/apply"
-                className="text-center text-sm font-semibold px-5 py-3 rounded-lg text-white"
+                className="text-center text-sm font-semibold px-4 py-2 rounded-lg text-white"
                 style={{ backgroundColor: "#dc2626" }}
                 onClick={() => setMenuOpen(false)}
               >
@@ -299,7 +322,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/login"
-                className="text-center text-sm font-semibold px-5 py-3 rounded-lg border-2"
+                className="text-center text-sm font-semibold px-4 py-2 rounded-lg border-2"
                 style={{ borderColor: "#dc2626", color: "#dc2626" }}
                 onClick={() => setMenuOpen(false)}
               >
