@@ -149,3 +149,15 @@ model Transaction {
   volunteer_id   Int?
   volunteer      Volunteer? @relation(fields: [volunteer_id], references: [id])
 }
+
+// ─── NEWS POSTS ──────────────────────────────────────────────────────────────
+model NewsPost {
+  id           Int      @id @default(autoincrement())
+  title        String
+  summary      String
+  content      String
+  category     String   @default("Latest News")
+  emoji        String   @default("📰")
+  published_at DateTime @default(now())
+  updated_at   DateTime @updatedAt
+}
