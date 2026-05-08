@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLinkedinIn, faFacebook, faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 
 export default function HomePage() {
   return (
@@ -273,7 +275,7 @@ export default function HomePage() {
                 { icon: "🏕️", text: "Refugees and internally displaced youth in South Sudan and Uganda" },
                 { icon: "🎓", text: "Recent school leavers with no computer or English background" },
                 { icon: "👩", text: "Young women and girls facing additional barriers to education" },
-                { icon: "🌍", text: "Anyone aged 16–35 seeking a pathway into digital work" },
+                { icon: "🌍", text: "Anyone aged 16-35 seeking a pathway into digital work" },
               ].map((item) => (
                 <li key={item.text} className="flex items-start gap-4">
                   <span
@@ -295,7 +297,7 @@ export default function HomePage() {
             {[
               { val: "South Sudan", sub: "Primary community served", icon: "🇸🇸" },
               { val: "Uganda", sub: "Partner community", icon: "🇺🇬" },
-              { val: "16–35", sub: "Target age range", icon: "👥" },
+              { val: "16-35", sub: "Target age range", icon: "👥" },
               { val: "Free", sub: "Accessible pricing", icon: "💚" },
             ].map((card) => (
               <div
@@ -338,6 +340,63 @@ export default function HomePage() {
             >
               Become a Volunteer
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FOOTER ────────────────────────────────────────────────────────── */}
+      <section className="py-12 px-6 text-center" style={{ backgroundColor: "#f9fafb", borderTop: "1px solid #e5e7eb" }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* Contact Info */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Contact</p>
+              <div className="space-y-2">
+                <p className="text-xs text-gray-600"><a href="tel:+233538002351" className="hover:text-red-600 transition-colors">+233-538-002-351</a></p>
+                <p className="text-xs text-gray-600"><a href="mailto:ststephentechbridge@gmail.com" className="hover:text-cyan-600 transition-colors">ststephentechbridge@gmail.com</a></p>
+                <p className="text-xs text-gray-600">South Sudan & Uganda</p>
+              </div>
+            </div>
+            
+            {/* Quick Links */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Quick Links</p>
+              <div className="space-y-1">
+                <p><Link href="/" className="text-xs text-gray-600 hover:text-red-600 transition-colors">Home</Link></p>
+                <p><Link href="/about" className="text-xs text-gray-600 hover:text-red-600 transition-colors">About</Link></p>
+                <p><Link href="/people" className="text-xs text-gray-600 hover:text-red-600 transition-colors">Our Team</Link></p>
+                <p><Link href="/volunteer" className="text-xs text-gray-600 hover:text-red-600 transition-colors">Volunteer</Link></p>
+              </div>
+            </div>
+            
+            {/* Social Media */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">Follow Us</p>
+              <div className="flex justify-center gap-2 flex-wrap">
+                {[
+                  { label: "LinkedIn", icon: faLinkedinIn, href: "#" },
+                  { label: "Facebook", icon: faFacebook, href: "#" },
+                  { label: "Instagram", icon: faInstagram, href: "#" },
+                  { label: "X / Twitter", icon: faXTwitter, href: "#" },
+                ].map((s) => (
+                  <a key={s.label} href={s.href}
+                    className="w-7 h-7 rounded flex items-center justify-center transition-all hover:-translate-y-0.5"
+                    style={{ backgroundColor: "transparent", color: "#1a1a2e", border: "1px solid #1a1a2e" }}
+                    title={s.label}>
+                    <FontAwesomeIcon icon={s.icon} className="text-xs" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-200 pt-6">
+            <p className="text-gray-400 italic text-xs">
+              "In loving memory of{" "}
+              <span className="text-gray-600 font-semibold">Stephen Riak</span>
+              {" "}- whose vision of a better-educated community is the foundation of everything we do."
+            </p>
+            <p className="text-gray-400 text-xs mt-3">&copy; 2026 St Stephen Tech Bridge. All rights reserved.</p>
           </div>
         </div>
       </section>
