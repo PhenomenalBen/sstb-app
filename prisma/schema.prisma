@@ -5,9 +5,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
 }
-
 // ─── USERS (Admins & Volunteers with dashboard access) ───────────────────────
 model User {
   id             Int      @id @default(autoincrement())
