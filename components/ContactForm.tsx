@@ -84,7 +84,7 @@ function ContactForm() {
             </label>
             <input
               type="email"
-              placeholder="you@example.com"
+              placeholder="your.email@example.com"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-red-400 transition-colors"
@@ -128,7 +128,7 @@ function ContactForm() {
         </button>
 
         <p className="text-xs text-gray-400 text-center">
-          We typically respond within 24–48 hours.
+          We typically respond within 48 hours.
         </p>
       </div>
     </div>

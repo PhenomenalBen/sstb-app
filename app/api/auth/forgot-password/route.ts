@@ -7,6 +7,9 @@ import crypto from "crypto"
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
 const resend = new Resend(process.env.RESEND_API_KEY)
+const sendFromName = process.env.RESEND_FROM_NAME ?? "SSTB"
+const sendFromAddress = process.env.RESEND_FROM_EMAIL ?? "no-reply@ststephentechbridge.site"
+const resetBaseUrl = process.env.NEXTAUTH_URL ?? "https://ststephentechbridge.site"
 
 export async function POST(req: NextRequest) {
   const { email } = await req.json()
@@ -34,10 +37,11 @@ export async function POST(req: NextRequest) {
       data: { email, token, expires_at },
     })
 
-    const resetUrl = `${process.env.NEXTAUTH_URL}/reset-password?token=${token}`
+    const resetUrl = `${resetBaseUrl}/reset-password?token=${token}`
+    const from = `${sendFromName} <${sendFromAddress}>`
 
     await resend.emails.send({
-      from: "SSTB <onboarding@resend.dev>",
+      from,
       to: email,
       subject: "Reset your SSTB password",
       html: `

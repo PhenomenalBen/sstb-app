@@ -18,7 +18,7 @@ export const teamMembers: TeamMember[] = [
     role: "Founder & Project Lead",
     bio: "Ben founded St Stephen Tech Bridge with a vision of bridging the digital divide for displaced youth in South Sudan and Uganda. He leads the organisation's strategy, partnerships, and technology development.",
     photo: "ben-riak.jpeg",
-    linkedin: "https://linkedin.com/in/yourprofile",
+    linkedin: "https://www.linkedin.com/in/ben-riak-changdar/",
     facebook: "#",
     instagram: "#",
     twitter: "#",

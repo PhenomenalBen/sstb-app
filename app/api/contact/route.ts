@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+const sendFromName = process.env.RESEND_FROM_NAME ?? "SSTB Contact Form"
+const sendFromAddress = process.env.RESEND_FROM_EMAIL ?? "contact@ststephentechbridge.site"
+const contactRecipient = process.env.CONTACT_EMAIL ?? "ststephentechbridge@gmail.com"
 
 export async function POST(request: NextRequest) {
   try {
@@ -18,10 +21,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid email address" }, { status: 400 })
     }
 
+    const from = `${sendFromName} <${sendFromAddress}>`
+
     // Send email
     const { data, error } = await resend.emails.send({
-      from: "SSTB Contact Form <contact@ststephentechbridge.org>",
-      to: ["ststephentechbridge@gmail.com"],
+      from,
+      to: [contactRecipient],
       subject: `SSTB Contact: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
