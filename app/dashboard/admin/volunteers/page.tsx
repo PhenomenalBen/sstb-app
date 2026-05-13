@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth"
 import { redirect } from "next/navigation"
-import { PrismaClient } from "@prisma/client/edge"
+import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import VolunteerApplicationsClient from "./VolunteerApplicationsClient"
 
