@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from "@prisma/client/edge"
 import { PrismaPg } from "@prisma/adapter-pg"
 import { notFound } from "next/navigation"
 import Link from "next/link"

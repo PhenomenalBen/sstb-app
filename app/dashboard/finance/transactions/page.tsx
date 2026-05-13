@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth"
 import { redirect } from "next/navigation"
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from "@prisma/client/edge"
 import { PrismaPg } from "@prisma/adapter-pg"
 import FinanceClient from "../../admin/finance/FinanceClient"
 
