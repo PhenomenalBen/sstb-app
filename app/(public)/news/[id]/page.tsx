@@ -3,6 +3,8 @@ import { PrismaPg } from "@prisma/adapter-pg"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 
+export const dynamic = "force-dynamic"
+
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
 
@@ -12,9 +14,15 @@ export default async function NewsDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const post = await prisma.newsPost.findUnique({
-    where: { id: parseInt(id) },
-  })
+  let post = null as Awaited<ReturnType<typeof prisma.newsPost.findUnique>> | null
+
+  try {
+    post = await prisma.newsPost.findUnique({
+      where: { id: parseInt(id) },
+    })
+  } catch (error) {
+    console.error("Failed to load news post:", error)
+  }
 
   if (!post) notFound()
 

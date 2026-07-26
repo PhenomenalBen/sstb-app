@@ -4,6 +4,8 @@ import { faLinkedinIn, faFacebook, faInstagram, faXTwitter } from "@fortawesome/
 import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 
+export const dynamic = "force-dynamic"
+
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
 
@@ -14,9 +16,15 @@ const categoryColor = (cat: string) => {
 }
 
 export default async function NewsPage() {
-  const posts = await prisma.newsPost.findMany({
-    orderBy: { published_at: "desc" },
-  })
+  let posts = [] as Awaited<ReturnType<typeof prisma.newsPost.findMany>>
+
+  try {
+    posts = await prisma.newsPost.findMany({
+      orderBy: { published_at: "desc" },
+    })
+  } catch (error) {
+    console.error("Failed to load news posts:", error)
+  }
 
   return (
     <div className="w-full">
