@@ -47,4 +47,15 @@ export const teamMembers: TeamMember[] = [
     photo: "pout-chop.jpeg",
     linkedin: "#",
   },
+  {
+    id: "chiang-gatyang",
+    name: "Chiang Gatyang Pathot",
+    role: "Social Media Manager",
+    bio: "Leads our online storytelling and community engagement, helping share the impact of SSTB and grow our digital presence across platforms.",
+    photo: "chiang-gatyang.jpeg",
+    linkedin: "#",
+    facebook: "#",
+    instagram: "#",
+    twitter: "#",
+  },
 ]
