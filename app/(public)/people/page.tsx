@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLinkedinIn, faFacebook, faInstagram, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { faUser, faPhone, faEnvelope, faMapPin, faHandsClapping } from "@fortawesome/free-solid-svg-icons"
 import { teamMembers } from "@/lib/team"
+import { socialLinks } from "@/lib/socials"
 import ContactForm from "./ContactForm"
 
 export default function PeoplePage() {
@@ -189,13 +190,13 @@ export default function PeoplePage() {
                 <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">Follow Us</p>
                 <div className="flex flex-wrap gap-3">
                   {[
-                    { label: "LinkedIn", icon: faLinkedinIn, href: "#" },
-                    { label: "Facebook", icon: faFacebook, href: "#" },
-                    { label: "Instagram", icon: faInstagram, href: "#" },
-                    { label: "X / Twitter", icon: faXTwitter, href: "#" },
-                    { label: "YouTube", icon: faYoutube, href: "#" },
+                    { ...socialLinks[0], icon: faLinkedinIn },
+                    { ...socialLinks[1], icon: faFacebook },
+                    { ...socialLinks[2], icon: faInstagram },
+                    { ...socialLinks[3], icon: faXTwitter },
+                    { ...socialLinks[4], icon: faYoutube },
                   ].map((s) => (
-                    <a key={s.label} href={s.href}
+                    <a key={s.label} href={s.href} target="_blank" rel="noreferrer"
                       className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:-translate-y-0.5"
                       style={{ backgroundColor: "transparent", color: "#1a1a2e", border: "2px solid #1a1a2e" }}
                       title={s.label}>

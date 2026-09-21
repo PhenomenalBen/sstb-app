@@ -1,8 +1,9 @@
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLinkedinIn, faFacebook, faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons"
+import { faLinkedinIn, faFacebook, faInstagram, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
+import { socialLinks } from "@/lib/socials"
 
 export const dynamic = "force-dynamic"
 
@@ -116,14 +117,17 @@ export default async function NewsPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              { label: "LinkedIn", icon: faLinkedinIn, href: "#" },
-              { label: "Facebook", icon: faFacebook, href: "#" },
-              { label: "Instagram", icon: faInstagram, href: "#" },
-              { label: "X / Twitter", icon: faXTwitter, href: "#" },
+              { ...socialLinks[0], icon: faLinkedinIn },
+              { ...socialLinks[1], icon: faFacebook },
+              { ...socialLinks[2], icon: faInstagram },
+              { ...socialLinks[3], icon: faXTwitter },
+              { ...socialLinks[4], icon: faYoutube },
             ].map((s) => (
               <a
                 key={s.label}
                 href={s.href}
+                target="_blank"
+                rel="noreferrer"
                 className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:-translate-y-0.5"
                 style={{ backgroundColor: "transparent", color: "#1a1a2e", border: "2px solid #1a1a2e" }}
                 title={s.label}

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { socialLinks } from "@/lib/socials"
 import Navbar from "../components/Navbar"
 
 export default function PublicLayout({
@@ -38,8 +39,20 @@ export default function PublicLayout({
             </div>
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-gray-500 mb-3">Follow Us</p>
-              <div className="space-y-2">
-                <p className="text-xs text-gray-600">LinkedIn / Facebook / Instagram / X</p>
+              <div className="flex flex-wrap gap-x-3 gap-y-1">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs text-gray-600 hover:text-red-600 transition-colors"
+                  >
+                    {social.label}
+                  </a>
+                ))}
+              </div>
+              <div className="space-y-2 mt-2">
                 <p className="text-xs text-gray-500">Stay connected with SSTB updates and volunteer opportunities.</p>
               </div>
             </div>
