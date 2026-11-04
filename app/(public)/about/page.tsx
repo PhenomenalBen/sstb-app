@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export default function AboutPage() {
   return (
@@ -25,7 +26,16 @@ export default function AboutPage() {
       </section>
 
       {/* ── OVERVIEW ─────────────────────────────────────────────────────── */}
-      <section id="overview" className="py-20 px-6 md:px-[5%] bg-white scroll-mt-20">
+      <section id="overview" className="overflow-hidden py-20 px-6 md:px-[5%] bg-white scroll-mt-20">
+        <div className="relative -mx-6 mb-16 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
+          <Image
+            src="/p4.jpg"
+            alt="A smiling student seated among classmates."
+            fill
+            sizes="100vw"
+            className="object-cover object-[center_38%]"
+          />
+        </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#00BCD4" }}>
@@ -54,7 +64,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Stats side */}
+          {/* Overview stats */}
           <div className="grid grid-cols-2 gap-5">
             {[
               { val: "2025", label: "Year Founded", icon: "📅", color: "#dc2626" },
@@ -80,7 +90,7 @@ export default function AboutPage() {
       {/* ── THE CHALLENGE ─────────────────────────────────────────────────── */}
       <section
         id="challenge"
-        className="py-20 px-6 md:px-[5%] scroll-mt-20"
+        className="overflow-hidden py-20 px-6 md:px-[5%] scroll-mt-20"
         style={{ backgroundColor: "#f9fafb" }}
       >
         <div className="max-w-7xl mx-auto">
@@ -162,12 +172,30 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
+        <div className="relative -mx-6 mt-16 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
+          <Image
+            src="/p5.jpg"
+            alt="Two young women sitting together outdoors."
+            fill
+            sizes="100vw"
+            className="object-cover object-[center_38%]"
+          />
+        </div>
       </section>
 
       {/* ── THE SOLUTION ──────────────────────────────────────────────────── */}
-      <section id="solution" className="py-20 px-6 md:px-[5%] bg-white scroll-mt-20">
+      <section id="solution" className="overflow-hidden py-20 px-6 md:px-[5%] bg-white scroll-mt-20">
+        <div className="relative -mx-6 mb-16 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
+          <Image
+            src="/p6.jpg"
+            alt="A man working at a computer."
+            fill
+            sizes="100vw"
+            className="object-cover object-[center_38%]"
+          />
+        </div>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="mb-14 text-center">
             <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#00BCD4" }}>
               The Solution
             </p>

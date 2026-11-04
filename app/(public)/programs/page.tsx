@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export default function ProgramsPage() {
   return (
@@ -29,8 +30,17 @@ export default function ProgramsPage() {
 
       {/* ── PROGRAMS ─────────────────────────────────────────────────────── */}
       <section id="programs" className="py-20 px-6 md:px-[5%] bg-white scroll-mt-20">
+        <div className="relative -mx-6 mb-14 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
+          <Image
+            src="/p1.jpg"
+            alt="A student writing in a notebook during a lesson."
+            fill
+            loading="eager"
+            sizes="100vw"
+            className="object-cover object-[center_38%]"
+          />
+        </div>
         <div className="max-w-7xl mx-auto">
-
           <div className="text-center mb-14">
             <p
               className="text-sm font-semibold uppercase tracking-widest mb-2"

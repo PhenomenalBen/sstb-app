@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export default function HomePage() {
   return (
@@ -6,34 +7,40 @@ export default function HomePage() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section
-        className="min-h-screen flex items-center px-6 md:px-[5%]"
-        style={{ background: "linear-gradient(135deg, #ffffff 0%, #fef2f2 100%)" }}
+        className="relative isolate flex min-h-[680px] items-center overflow-hidden bg-gray-900"
+        style={{ minHeight: "min(900px, calc(100svh - 5rem))" }}
       >
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
-
-          {/* Left — Text */}
-          <div>
+        <Image
+          src="/hero.jpeg"
+          alt="A student attending a class at St Stephen Tech Bridge."
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover object-[center_42%]"
+        />
+        <div className="absolute inset-0 -z-0 bg-gradient-to-r from-black/80 via-black/55 to-black/10" />
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-20 md:px-[5%]">
+          <div className="max-w-3xl">
             <p
               className="text-sm font-semibold uppercase tracking-widest mb-4"
-              style={{ color: "#00BCD4" }}
+              style={{ color: "#67e8f9" }}
             >
               Empowering African Youth
             </p>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
               Bridging the{" "}
-              <span style={{ color: "#dc2626" }}>Technological</span>{" "}
+              <span style={{ color: "#f87171" }}>Technological</span>{" "}
               Divide,{" "}
               <br className="hidden md:block" />
               One Student at a Time
             </h1>
-            <p className="text-lg text-gray-600 mb-4 leading-relaxed">
+            <p className="text-lg md:text-xl text-white/90 mb-4 leading-relaxed">
               St Stephen Tech Bridge equips displaced and underserved youth in
               South Sudan and Uganda with computer literacy, English, and
               mathematics skills at zero cost.
             </p>
             <p
-              className="text-sm italic mb-8"
-              style={{ color: "#dc2626" }}
+              className="text-sm italic mb-8 text-red-200"
             >
               In loving memory of Stephen Riak-whose vision lives on in every
               student we serve.
@@ -45,60 +52,36 @@ export default function HomePage() {
                 className="px-8 py-3 rounded-lg text-white font-semibold text-base transition-all duration-300 hover:-translate-y-1"
                 style={{
                   backgroundColor: "#dc2626",
-                  boxShadow: "0 4px 14px rgba(220,38,38,0.35)",
+                  boxShadow: "0 4px 14px rgba(220,38,38,0.5)",
                 }}
               >
                 Apply Now →
               </Link>
               <Link
                 href="/volunteer"
-                className="px-8 py-3 rounded-lg font-semibold text-base border-2 transition-all duration-300 hover:bg-gray-900 hover:text-white"
-                style={{ borderColor: "#1a1a1a", color: "#453f3f" }}
+                className="px-8 py-3 rounded-lg font-semibold text-base border-2 border-white text-white transition-all duration-300 hover:bg-white hover:text-gray-900"
               >
                 Get Involved
               </Link>
             </div>
           </div>
 
-          {/* Right — Visual Card */}
-          <div className="flex justify-center">
-            <div
-              className="w-full max-w-md rounded-2xl p-8 text-white relative overflow-hidden"
-              style={{
-                background: "linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%)",
-                boxShadow: "0 20px 60px rgba(220,38,38,0.3)",
-              }}
-            >
-              <div
-                className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-10"
-                style={{ background: "#fff", transform: "translate(30%, -30%)" }}
-              />
-              <div
-                className="absolute bottom-0 left-0 w-28 h-28 rounded-full opacity-10"
-                style={{ background: "#fff", transform: "translate(-30%, 30%)" }}
-              />
-              <div className="relative z-10">
-                <div className="text-5xl mb-4">🌉</div>
-                <h3 className="text-2xl font-bold mb-2">
-                  6-Week Intensive Bootcamp
-                </h3>
-                <p className="text-red-100 mb-6">
-                  Computer Literacy · English · Mathematics
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { val: "50+", label: "Students Trained" },
-                    { val: "$0", label: "Full Program Cost" },
-                    { val: "3", label: "Core Courses" },
-                    { val: "100%", label: "Get Certified" },
-                  ].map((s) => (
-                    <div key={s.label} className="bg-white/10 rounded-lg p-3 text-center">
-                      <div className="text-2xl font-bold">{s.val}</div>
-                      <div className="text-xs text-red-200">{s.label}</div>
-                    </div>
-                  ))}
+          <div className="mt-14 max-w-3xl">
+            <h2 className="text-xl font-bold text-white mb-4">
+              6-Week Intensive Bootcamp
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[
+                { val: "50+", label: "Students Trained" },
+                { val: "$0", label: "Full Program Cost" },
+                { val: "3", label: "Core Courses" },
+                { val: "100%", label: "Get Certified" },
+              ].map((s) => (
+                <div key={s.label} className="rounded-lg bg-black/35 px-4 py-3 text-white backdrop-blur-sm">
+                  <div className="text-2xl font-bold">{s.val}</div>
+                  <div className="text-xs text-white/80">{s.label}</div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -253,7 +236,16 @@ export default function HomePage() {
       </section>
 
       {/* ── TARGET AUDIENCE ──────────────────────────────────────────────── */}
-      <section className="py-20 px-6 md:px-[5%] bg-white">
+      <section className="overflow-hidden py-20 px-6 md:px-[5%] bg-white">
+        <div className="relative -mx-6 mb-16 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
+          <Image
+            src="/p3.jpg"
+            alt="Two young men greeting each other with a handshake."
+            fill
+            sizes="100vw"
+            className="object-cover object-[center_38%]"
+          />
+        </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
           {/* Left */}
