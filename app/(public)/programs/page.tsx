@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Image from "next/image"
+import PhotoGallery from "../../components/PhotoGallery"
 
 export default function ProgramsPage() {
   return (
@@ -30,16 +30,23 @@ export default function ProgramsPage() {
 
       {/* ── PROGRAMS ─────────────────────────────────────────────────────── */}
       <section id="programs" className="py-20 px-6 md:px-[5%] bg-white scroll-mt-20">
-        <div className="relative -mx-6 mb-14 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
-          <Image
-            src="/p1.jpg"
-            alt="A student writing in a notebook during a lesson."
-            fill
-            loading="eager"
-            sizes="100vw"
-            className="object-cover object-[center_38%]"
-          />
-        </div>
+        <PhotoGallery
+          className="mb-14"
+          images={[
+            {
+              src: "/p1.jpeg",
+              alt: "A student writing in a notebook during a lesson.",
+              width: 810,
+              height: 1080,
+            },
+            {
+              src: "/p2.jpeg",
+              alt: "A staff member working at a desktop computer.",
+              width: 810,
+              height: 1080,
+            },
+          ]}
+        />
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <p

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Image from "next/image"
+import PhotoGallery from "../../components/PhotoGallery"
 
 export default function AboutPage() {
   return (
@@ -27,15 +27,23 @@ export default function AboutPage() {
 
       {/* ── OVERVIEW ─────────────────────────────────────────────────────── */}
       <section id="overview" className="overflow-hidden py-20 px-6 md:px-[5%] bg-white scroll-mt-20">
-        <div className="relative -mx-6 mb-16 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
-          <Image
-            src="/p4.jpg"
-            alt="A smiling student seated among classmates."
-            fill
-            sizes="100vw"
-            className="object-cover object-[center_38%]"
-          />
-        </div>
+        <PhotoGallery
+          className="mb-16"
+          images={[
+            {
+              src: "/p5.jpeg",
+              alt: "Two young women smiling together outdoors.",
+              width: 1080,
+              height: 810,
+            },
+            {
+              src: "/p6.jpeg",
+              alt: "A student learning at a desktop computer.",
+              width: 810,
+              height: 1080,
+            },
+          ]}
+        />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#00BCD4" }}>
@@ -172,28 +180,44 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-        <div className="relative -mx-6 mt-16 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
-          <Image
-            src="/p5.jpg"
-            alt="Two young women sitting together outdoors."
-            fill
-            sizes="100vw"
-            className="object-cover object-[center_38%]"
-          />
-        </div>
+        <PhotoGallery
+          className="mt-16"
+          images={[
+            {
+              src: "/p7.jpeg",
+              alt: "A student working at a computer in class.",
+              width: 810,
+              height: 1080,
+            },
+            {
+              src: "/p8.jpeg",
+              alt: "A student using a desktop computer during a lesson.",
+              width: 810,
+              height: 1080,
+            },
+          ]}
+        />
       </section>
 
       {/* ── THE SOLUTION ──────────────────────────────────────────────────── */}
       <section id="solution" className="overflow-hidden py-20 px-6 md:px-[5%] bg-white scroll-mt-20">
-        <div className="relative -mx-6 mb-16 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
-          <Image
-            src="/p6.jpg"
-            alt="A man working at a computer."
-            fill
-            sizes="100vw"
-            className="object-cover object-[center_38%]"
-          />
-        </div>
+        <PhotoGallery
+          className="mb-16"
+          images={[
+            {
+              src: "/p9.jpeg",
+              alt: "A student learning to use a computer.",
+              width: 810,
+              height: 1080,
+            },
+            {
+              src: "/p10.jpeg",
+              alt: "A student practicing computer skills in class.",
+              width: 810,
+              height: 1080,
+            },
+          ]}
+        />
         <div className="max-w-7xl mx-auto">
           <div className="mb-14 text-center">
             <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#00BCD4" }}>

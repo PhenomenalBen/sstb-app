@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import PhotoGallery from "../components/PhotoGallery"
 
 export default function HomePage() {
   return (
@@ -237,15 +238,23 @@ export default function HomePage() {
 
       {/* ── TARGET AUDIENCE ──────────────────────────────────────────────── */}
       <section className="overflow-hidden py-20 px-6 md:px-[5%] bg-white">
-        <div className="relative -mx-6 mb-16 h-[min(65vh,700px)] min-h-[360px] md:-mx-[5vw]">
-          <Image
-            src="/p3.jpg"
-            alt="Two young men greeting each other with a handshake."
-            fill
-            sizes="100vw"
-            className="object-cover object-[center_38%]"
-          />
-        </div>
+        <PhotoGallery
+          className="mb-16"
+          images={[
+            {
+              src: "/p3.jpeg",
+              alt: "Two students standing together in SSTB shirts.",
+              width: 810,
+              height: 1080,
+            },
+            {
+              src: "/p4.jpeg",
+              alt: "A student smiling among classmates.",
+              width: 810,
+              height: 1080,
+            },
+          ]}
+        />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
           {/* Left */}
