@@ -4,29 +4,31 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { signOut, useSession } from "next-auth/react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChartPie, faClipboardList, faGear, faGraduationCap, faHand, faHandshakeAngle, faNewspaper, faReceipt, faRightFromBracket, faUsers, faWallet } from "@fortawesome/free-solid-svg-icons"
 
 const adminLinks = [
-  { label: "Overview", href: "/dashboard/admin", icon: "📊" },
-  { label: "Applications", href: "/dashboard/admin/applications", icon: "📋" },
-  { label: "Volunteers", href: "/dashboard/admin/volunteers", icon: "🙋" },
-  { label: "Students", href: "/dashboard/admin/students", icon: "🎓" },
-  { label: "Team & Users", href: "/dashboard/admin/team", icon: "👥" },
-  { label: "News", href: "/dashboard/admin/news", icon: "📰" },
-  { label: "Finance", href: "/dashboard/admin/finance", icon: "💰" },
-  { label: "Settings", href: "/dashboard/settings", icon: "⚙️" },
+  { label: "Overview", href: "/dashboard/admin", icon: faChartPie },
+  { label: "Applications", href: "/dashboard/admin/applications", icon: faClipboardList },
+  { label: "Volunteers", href: "/dashboard/admin/volunteers", icon: faHandshakeAngle },
+  { label: "Students", href: "/dashboard/admin/students", icon: faGraduationCap },
+  { label: "Team & Users", href: "/dashboard/admin/team", icon: faUsers },
+  { label: "News", href: "/dashboard/admin/news", icon: faNewspaper },
+  { label: "Finance", href: "/dashboard/admin/finance", icon: faWallet },
+  { label: "Settings", href: "/dashboard/settings", icon: faGear },
 ]
 
 const financeLinks = [
-  { label: "Overview", href: "/dashboard/finance", icon: "📊" },
-  { label: "Transactions", href: "/dashboard/finance/transactions", icon: "💳" },
-  { label: "Balances", href: "/dashboard/finance/balances", icon: "💰" },
-  { label: "Settings", href: "/dashboard/settings", icon: "⚙️" },
+  { label: "Overview", href: "/dashboard/finance", icon: faChartPie },
+  { label: "Transactions", href: "/dashboard/finance/transactions", icon: faReceipt },
+  { label: "Balances", href: "/dashboard/finance/balances", icon: faWallet },
+  { label: "Settings", href: "/dashboard/settings", icon: faGear },
 ]
 
 const volunteerLinks = [
-  { label: "Overview", href: "/dashboard/volunteer", icon: "📊" },
-  { label: "Students", href: "/dashboard/volunteer/students", icon: "🎓" },
-  { label: "Settings", href: "/dashboard/settings", icon: "⚙️" },
+  { label: "Overview", href: "/dashboard/volunteer", icon: faChartPie },
+  { label: "Students", href: "/dashboard/volunteer/students", icon: faGraduationCap },
+  { label: "Settings", href: "/dashboard/settings", icon: faGear },
 ]
 
 export default function DashboardLayout({
@@ -143,7 +145,7 @@ export default function DashboardLayout({
                       }
                     }}
                   >
-                    <span>{link.icon}</span>
+                    <span className="w-5 text-center"><FontAwesomeIcon icon={link.icon} /></span>
                     {link.label}
                   </Link>
                 </li>
@@ -158,7 +160,7 @@ export default function DashboardLayout({
             onClick={() => signOut({ callbackUrl: "/login" })}
             className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-red-600/20 transition-all duration-200"
           >
-            <span>🚪</span>
+            <span className="w-5 text-center"><FontAwesomeIcon icon={faRightFromBracket} /></span>
             Sign Out
           </button>
         </div>
@@ -188,7 +190,7 @@ export default function DashboardLayout({
               <span className="font-semibold text-gray-800">
                 {session?.user?.name?.split(" ")[0]}
               </span>{" "}
-              👋
+              <FontAwesomeIcon icon={faHand} className="text-amber-400" />
             </p>
           </div>
 

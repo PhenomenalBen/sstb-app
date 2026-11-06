@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelopeCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("")
@@ -66,7 +68,7 @@ export default function ForgotPasswordPage() {
           <div className="p-8">
             {success ? (
               <div className="text-center">
-                <div className="text-5xl mb-4">📬</div>
+                <div className="mb-4"><FontAwesomeIcon icon={faEnvelopeCircleCheck} className="text-5xl text-green-500" /></div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Check your inbox
                 </h3>

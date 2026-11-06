@@ -1,6 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import PhotoGallery from "../components/PhotoGallery"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAward, faBookOpen, faCalculator, faCalendarDays, faCertificate, faComments, faDesktop, faEarthAfrica, faGraduationCap, faHandHoldingDollar, faHandHoldingHeart, faLaptop, faLocationDot, faPersonDress, faSquareRootVariable, faTent, faUsers } from "@fortawesome/free-solid-svg-icons"
 
 export default function HomePage() {
   return (
@@ -92,13 +94,13 @@ export default function HomePage() {
       <section className="py-12 px-6" style={{ backgroundColor: "#1a1a1a" }}>
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { val: "50+", label: "Students Trained", icon: "🎓" },
-            { val: "6 Weeks", label: "Intensive Bootcamp", icon: "📅" },
-            { val: "100%", label: "Certification Rate", icon: "🏅" },
-            { val: "$0", label: "Full Program Cost", icon: "💡" },
+            { val: "50+", label: "Students Trained", icon: faGraduationCap },
+            { val: "6 Weeks", label: "Intensive Bootcamp", icon: faCalendarDays },
+            { val: "100%", label: "Certification Rate", icon: faAward },
+            { val: "$0", label: "Full Program Cost", icon: faHandHoldingDollar },
           ].map((s) => (
             <div key={s.label}>
-              <div className="text-3xl mb-1">{s.icon}</div>
+              <div className="text-3xl mb-2 text-red-500"><FontAwesomeIcon icon={s.icon} /></div>
               <div
                 className="text-3xl font-bold mb-1"
                 style={{ color: "#00BCD4" }}
@@ -130,19 +132,19 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: "💻",
+                icon: faLaptop,
                 title: "The Digital Divide",
                 color: "#dc2626",
                 desc: "Most displaced youth have never touched a computer. In a world where digital skills are a prerequisite for almost every opportunity, this gap is devastating.",
               },
               {
-                icon: "🗣️",
+                icon: faComments,
                 title: "The English Barrier",
                 color: "#00BCD4",
                 desc: "English is the language of higher education, international employment, and global communication. Without it, doors remain firmly closed.",
               },
               {
-                icon: "🔢",
+                icon: faCalculator,
                 title: "Mathematical Illiteracy",
                 color: "#1a1a1a",
                 desc: "Basic numeracy is essential for financial independence, academic success, and navigating everyday life. Yet many lack even foundational math skills.",
@@ -157,7 +159,7 @@ export default function HomePage() {
                   className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-5"
                   style={{ backgroundColor: card.color }}
                 >
-                  {card.icon}
+                  <FontAwesomeIcon icon={card.icon} className="text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {card.title}
@@ -189,25 +191,25 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                icon: "🖥️",
+                icon: faDesktop,
                 title: "Computer Literacy",
                 desc: "Typing, MS Office, email, file management, and safe internet use, the essential digital toolkit.",
                 color: "#dc2626",
               },
               {
-                icon: "📖",
+                icon: faBookOpen,
                 title: "English Skills",
                 desc: "Grammar, writing, reading comprehension, and presentation skills for academic and professional success.",
                 color: "#00BCD4",
               },
               {
-                icon: "➗",
+                icon: faSquareRootVariable,
                 title: "Math Skills",
                 desc: "Arithmetic, fractions, percentages, and logical problem-solving for everyday and academic use.",
                 color: "#1a1a1a",
               },
               {
-                icon: "🏆",
+                icon: faCertificate,
                 title: "Certification",
                 desc: "Every graduate receives a certificate recognising their achievement and boosting their opportunities.",
                 color: "#dc2626",
@@ -221,7 +223,7 @@ export default function HomePage() {
                   className="w-16 h-16 rounded-full flex items-center justify-center text-3xl mx-auto mb-4"
                   style={{ backgroundColor: obj.color + "15" }}
                 >
-                  {obj.icon}
+                  <FontAwesomeIcon icon={obj.icon} style={{ color: obj.color }} />
                 </div>
                 <h3
                   className="text-lg font-bold mb-2"
@@ -271,17 +273,17 @@ export default function HomePage() {
             </p>
             <ul className="space-y-4">
               {[
-                { icon: "🏕️", text: "Refugees and internally displaced youth in South Sudan and Uganda" },
-                { icon: "🎓", text: "Recent school leavers with no computer or English background" },
-                { icon: "👩", text: "Young women and girls facing additional barriers to education" },
-                { icon: "🌍", text: "Anyone aged 16-35 seeking a pathway into digital work" },
+                { icon: faTent, text: "Refugees and internally displaced youth in South Sudan and Uganda" },
+                { icon: faGraduationCap, text: "Recent school leavers with no computer or English background" },
+                { icon: faPersonDress, text: "Young women and girls facing additional barriers to education" },
+                { icon: faEarthAfrica, text: "Anyone aged 16-35 seeking a pathway into digital work" },
               ].map((item) => (
                 <li key={item.text} className="flex items-start gap-4">
                   <span
                     className="w-10 h-10 rounded-lg flex items-center justify-center text-lg flex-shrink-0"
                     style={{ backgroundColor: "#fef2f2" }}
                   >
-                    {item.icon}
+                    <FontAwesomeIcon icon={item.icon} className="text-red-600" />
                   </span>
                   <span className="text-gray-700 text-sm leading-relaxed pt-2">
                     {item.text}
@@ -294,16 +296,16 @@ export default function HomePage() {
           {/* Right */}
           <div className="grid grid-cols-2 gap-4">
             {[
-              { val: "South Sudan", sub: "Primary community served", icon: "🇸🇸" },
-              { val: "Uganda", sub: "Partner community", icon: "🇺🇬" },
-              { val: "16-35", sub: "Target age range", icon: "👥" },
-              { val: "Free", sub: "Accessible pricing", icon: "💚" },
+              { val: "South Sudan", sub: "Primary community served", icon: faLocationDot },
+              { val: "Uganda", sub: "Partner community", icon: faLocationDot },
+              { val: "16-35", sub: "Target age range", icon: faUsers },
+              { val: "Free", sub: "Accessible pricing", icon: faHandHoldingHeart },
             ].map((card) => (
               <div
                 key={card.val}
                 className="rounded-xl p-6 text-center border-2 border-gray-100 hover:border-red-200 transition-all duration-300"
               >
-                <div className="text-3xl mb-2">{card.icon}</div>
+                <div className="text-3xl mb-2 text-red-600"><FontAwesomeIcon icon={card.icon} /></div>
                 <div className="font-bold text-lg text-gray-900">{card.val}</div>
                 <div className="text-xs text-gray-500 mt-1">{card.sub}</div>
               </div>

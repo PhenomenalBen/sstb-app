@@ -3,6 +3,8 @@ import { redirect } from "next/navigation"
 import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowTrendDown, faArrowTrendUp, faHourglassHalf, faReceipt, faWallet } from "@fortawesome/free-solid-svg-icons"
 
 export const dynamic = "force-dynamic"
 
@@ -49,21 +51,21 @@ export default async function FinanceDashboardPage() {
           {
             label: "Total Received",
             value: `$${Number(totalIn._sum.amount || 0).toFixed(2)}`,
-            icon: "💚",
+            icon: faArrowTrendUp,
             color: "#16a34a",
             bg: "#dcfce7",
           },
           {
             label: "Total Spent",
             value: `$${Number(totalOut._sum.amount || 0).toFixed(2)}`,
-            icon: "🔴",
+            icon: faArrowTrendDown,
             color: "#dc2626",
             bg: "#fee2e2",
           },
           {
             label: "Total Balance Due",
             value: `$${Number(totalDue._sum.balance_due || 0).toFixed(2)}`,
-            icon: "⏳",
+            icon: faHourglassHalf,
             color: "#92400e",
             bg: "#fef3c7",
           },
@@ -76,7 +78,7 @@ export default async function FinanceDashboardPage() {
               className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
               style={{ backgroundColor: s.bg }}
             >
-              {s.icon}
+              <FontAwesomeIcon icon={s.icon} style={{ color: s.color }} />
             </div>
             <div>
               <p className="text-2xl font-bold" style={{ color: s.color }}>
@@ -91,8 +93,8 @@ export default async function FinanceDashboardPage() {
       {/* Quick Links */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         {[
-          { label: "Manage Transactions", href: "/dashboard/finance/transactions", icon: "💳", color: "#dc2626" },
-          { label: "View Balances", href: "/dashboard/finance/balances", icon: "💰", color: "#00BCD4" },
+          { label: "Manage Transactions", href: "/dashboard/finance/transactions", icon: faReceipt, color: "#dc2626" },
+          { label: "View Balances", href: "/dashboard/finance/balances", icon: faWallet, color: "#00BCD4" },
         ].map((link) => (
           <Link
             key={link.label}
@@ -103,7 +105,7 @@ export default async function FinanceDashboardPage() {
               className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
               style={{ backgroundColor: link.color + "15" }}
             >
-              {link.icon}
+              <FontAwesomeIcon icon={link.icon} style={{ color: link.color }} />
             </div>
             <span className="font-semibold text-gray-800">{link.label}</span>
             <span className="ml-auto text-gray-400">→</span>

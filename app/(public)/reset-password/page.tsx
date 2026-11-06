@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
+import { faCircleCheck, faCircleXmark, faSpinner } from "@fortawesome/free-solid-svg-icons"
 
 function ResetPasswordForm() {
   const searchParams = useSearchParams()
@@ -76,7 +76,7 @@ function ResetPasswordForm() {
   if (validating) {
     return (
       <div className="text-center py-12">
-        <div className="text-4xl mb-4">⏳</div>
+        <div className="mb-4"><FontAwesomeIcon icon={faSpinner} className="text-4xl text-gray-400 animate-spin" /></div>
         <p className="text-gray-500 text-sm">Validating your reset link...</p>
       </div>
     )
@@ -85,7 +85,7 @@ function ResetPasswordForm() {
   if (!token || !tokenValid) {
     return (
       <div className="text-center py-12">
-        <div className="text-5xl mb-4">❌</div>
+        <div className="mb-4"><FontAwesomeIcon icon={faCircleXmark} className="text-5xl text-red-500" /></div>
         <h3 className="text-lg font-bold text-gray-900 mb-2">
           Invalid or Expired Link
         </h3>

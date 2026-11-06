@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHandshakeAngle, faKey, faUser, faWallet } from "@fortawesome/free-solid-svg-icons"
 
 type User = {
   id: number
@@ -113,7 +115,8 @@ export default function TeamClient({
                 : { backgroundColor: "#f3f4f6", color: "#374151" }
             }
           >
-            {t === "users" ? `👤 Dashboard Users (${userList.length})` : `🙋 Volunteers (${volunteers.length})`}
+            <FontAwesomeIcon icon={t === "users" ? faUser : faHandshakeAngle} className="mr-1.5" />
+            {t === "users" ? `Dashboard Users (${userList.length})` : `Volunteers (${volunteers.length})`}
           </button>
         ))}
       </div>
@@ -318,8 +321,8 @@ export default function TeamClient({
                 </label>
                 <div className="flex gap-3">
                   {[
-                    { val: "admin", label: "🔑 Admin" },
-                    { val: "volunteer", label: "🙋 Volunteer" },
+                    { val: "admin", label: "Admin", icon: faKey },
+                    { val: "volunteer", label: "Volunteer", icon: faHandshakeAngle },
                   ].map((r) => (
                     <button
                       key={r.val}
@@ -331,7 +334,7 @@ export default function TeamClient({
                           : { borderColor: "#e5e7eb", color: "#374151" }
                       }
                     >
-                      {r.label}
+                      <FontAwesomeIcon icon={r.icon} className="mr-1.5" />{r.label}
                     </button>
                   ))}
                 </div>
@@ -344,8 +347,8 @@ export default function TeamClient({
                   </label>
                   <div className="flex gap-3">
                     {[
-                      { val: "finance", label: "💰 Finance" },
-                      { val: "other", label: "🙋 Other" },
+                      { val: "finance", label: "Finance", icon: faWallet },
+                      { val: "other", label: "Other", icon: faHandshakeAngle },
                     ].map((t) => (
                       <button
                         key={t.val}
@@ -357,7 +360,7 @@ export default function TeamClient({
                             : { borderColor: "#e5e7eb", color: "#374151" }
                         }
                       >
-                        {t.label}
+                        <FontAwesomeIcon icon={t.icon} className="mr-1.5" />{t.label}
                       </button>
                     ))}
                   </div>

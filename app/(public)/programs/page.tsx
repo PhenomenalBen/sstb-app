@@ -1,5 +1,7 @@
 import Link from "next/link"
 import PhotoGallery from "../../components/PhotoGallery"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAward, faBookOpen, faCalendarDays, faFileLines, faGlobe, faLaptop, faMoneyBillWave, faPalette, faPrint, faSquareRootVariable } from "@fortawesome/free-solid-svg-icons"
 
 export default function ProgramsPage() {
   return (
@@ -69,7 +71,7 @@ export default function ProgramsPage() {
             {[
               {
                 id: "computer",
-                icon: "💻",
+                icon: faLaptop,
                 title: "Computer Literacy",
                 color: "#dc2626",
                 bg: "#fef2f2",
@@ -87,7 +89,7 @@ export default function ProgramsPage() {
               },
               {
                 id: "english",
-                icon: "📖",
+                icon: faBookOpen,
                 title: "Functional English",
                 color: "#00BCD4",
                 bg: "#e0f7fa",
@@ -105,7 +107,7 @@ export default function ProgramsPage() {
               },
               {
                 id: "math",
-                icon: "➗",
+                icon: faSquareRootVariable,
                 title: "Foundational Math",
                 color: "#1a1a1a",
                 bg: "#f3f4f6",
@@ -136,7 +138,7 @@ export default function ProgramsPage() {
                     className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-4"
                     style={{ backgroundColor: prog.color }}
                   >
-                    {prog.icon}
+                    <FontAwesomeIcon icon={prog.icon} className="text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     {prog.title}
@@ -179,12 +181,12 @@ export default function ProgramsPage() {
             style={{ backgroundColor: "#1a1a2e" }}
           >
             {[
-              { icon: "📅", val: "6 Weeks", label: "Total Duration" },
-              { icon: "🏅", val: "100%", label: "Certification Rate" },
-              { icon: "💰", val: "$0", label: "Full Program Fee" },
+              { icon: faCalendarDays, val: "6 Weeks", label: "Total Duration" },
+              { icon: faAward, val: "100%", label: "Certification Rate" },
+              { icon: faMoneyBillWave, val: "$0", label: "Full Program Fee" },
             ].map((info) => (
               <div key={info.label}>
-                <div className="text-3xl mb-2">{info.icon}</div>
+                <div className="text-3xl mb-2 text-red-500"><FontAwesomeIcon icon={info.icon} /></div>
                 <div
                   className="text-2xl font-bold mb-1"
                   style={{ color: "#00BCD4" }}
@@ -227,7 +229,7 @@ export default function ProgramsPage() {
             {[
               {
                 id: "web",
-                icon: "🌐",
+                icon: faGlobe,
                 title: "Web Development",
                 color: "#dc2626",
                 bg: "#fef2f2",
@@ -241,7 +243,7 @@ export default function ProgramsPage() {
               },
               {
                 id: "graphics",
-                icon: "🎨",
+                icon: faPalette,
                 title: "Graphics Design",
                 color: "#00BCD4",
                 bg: "#e0f7fa",
@@ -255,7 +257,7 @@ export default function ProgramsPage() {
               },
               {
                 id: "cv",
-                icon: "📄",
+                icon: faFileLines,
                 title: "CV & Cover Letter",
                 color: "#1a1a1a",
                 bg: "#f3f4f6",
@@ -269,7 +271,7 @@ export default function ProgramsPage() {
               },
               {
                 id: "printing",
-                icon: "🖨️",
+                icon: faPrint,
                 title: "Printing & Scanning",
                 color: "#dc2626",
                 bg: "#fef2f2",
@@ -293,7 +295,7 @@ export default function ProgramsPage() {
                     className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-3"
                     style={{ backgroundColor: svc.color }}
                   >
-                    {svc.icon}
+                    <FontAwesomeIcon icon={svc.icon} className="text-white" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900">
                     {svc.title}

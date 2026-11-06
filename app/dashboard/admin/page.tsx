@@ -3,6 +3,8 @@ import { redirect } from "next/navigation"
 import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faClipboardList, faFilePen, faGear, faGraduationCap, faHandshakeAngle, faNewspaper, faUsers, faWallet } from "@fortawesome/free-solid-svg-icons"
 
 export const dynamic = "force-dynamic"
 
@@ -45,28 +47,28 @@ export default async function AdminOverviewPage() {
           {
             label: "Enrolled Students",
             value: totalStudents,
-            icon: "🎓",
+            icon: faGraduationCap,
             color: "#dc2626",
             href: "/dashboard/admin/students",
           },
           {
             label: "Active Volunteers",
             value: totalVolunteers,
-            icon: "🙋",
+            icon: faHandshakeAngle,
             color: "#00BCD4",
             href: "/dashboard/admin/volunteers",
           },
           {
             label: "Pending Student Apps",
             value: pendingApplications,
-            icon: "📋",
+            icon: faClipboardList,
             color: "#f59e0b",
             href: "/dashboard/admin/applications",
           },
           {
             label: "Pending Volunteer Apps",
             value: pendingVolunteerApps,
-            icon: "📝",
+            icon: faFilePen,
             color: "#8b5cf6",
             href: "/dashboard/admin/volunteers",
           },
@@ -77,7 +79,7 @@ export default async function AdminOverviewPage() {
             className="bg-white rounded-xl p-5 border-2 border-gray-100 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 block"
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="text-2xl">{stat.icon}</span>
+              <span className="text-2xl" style={{ color: stat.color }}><FontAwesomeIcon icon={stat.icon} /></span>
               <span
                 className="text-xs font-bold px-2 py-0.5 rounded-full text-white"
                 style={{ backgroundColor: stat.color }}
@@ -163,12 +165,12 @@ export default async function AdminOverviewPage() {
           </div>
           <div className="p-5 grid grid-cols-2 gap-3">
             {[
-              { label: "Review Applications", href: "/dashboard/admin/applications", icon: "📋", color: "#dc2626" },
-              { label: "Manage Students", href: "/dashboard/admin/students", icon: "🎓", color: "#00BCD4" },
-              { label: "Add News Post", href: "/dashboard/admin/news", icon: "📰", color: "#8b5cf6" },
-              { label: "Manage Team", href: "/dashboard/admin/team", icon: "👥", color: "#f59e0b" },
-              { label: "View Finances", href: "/dashboard/admin/finance", icon: "💰", color: "#10b981" },
-              { label: "Settings", href: "/dashboard/settings", icon: "⚙️", color: "#6b7280" },
+              { label: "Review Applications", href: "/dashboard/admin/applications", icon: faClipboardList, color: "#dc2626" },
+              { label: "Manage Students", href: "/dashboard/admin/students", icon: faGraduationCap, color: "#00BCD4" },
+              { label: "Add News Post", href: "/dashboard/admin/news", icon: faNewspaper, color: "#8b5cf6" },
+              { label: "Manage Team", href: "/dashboard/admin/team", icon: faUsers, color: "#f59e0b" },
+              { label: "View Finances", href: "/dashboard/admin/finance", icon: faWallet, color: "#10b981" },
+              { label: "Settings", href: "/dashboard/settings", icon: faGear, color: "#6b7280" },
             ].map((action) => (
               <Link
                 key={action.label}
@@ -179,7 +181,7 @@ export default async function AdminOverviewPage() {
                   className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
                   style={{ backgroundColor: action.color + "20" }}
                 >
-                  {action.icon}
+                  <FontAwesomeIcon icon={action.icon} style={{ color: action.color }} />
                 </span>
                 <span className="text-xs font-semibold text-gray-700">
                   {action.label}

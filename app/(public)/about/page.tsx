@@ -1,5 +1,7 @@
 import Link from "next/link"
 import PhotoGallery from "../../components/PhotoGallery"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBook, faBullseye, faCalculator, faCalendarDays, faComments, faEye, faGraduationCap, faHandHoldingDollar, faLaptop } from "@fortawesome/free-solid-svg-icons"
 
 export default function AboutPage() {
   return (
@@ -75,16 +77,16 @@ export default function AboutPage() {
           {/* Overview stats */}
           <div className="grid grid-cols-2 gap-5">
             {[
-              { val: "2025", label: "Year Founded", icon: "📅", color: "#dc2626" },
-              { val: "50+", label: "Students Trained", icon: "🎓", color: "#00BCD4" },
-              { val: "3", label: "Core Courses", icon: "📚", color: "#1a1a1a" },
-              { val: "$0", label: "Full Program Cost", icon: "💡", color: "#dc2626" },
+              { val: "2025", label: "Year Founded", icon: faCalendarDays, color: "#dc2626" },
+              { val: "50+", label: "Students Trained", icon: faGraduationCap, color: "#00BCD4" },
+              { val: "3", label: "Core Courses", icon: faBook, color: "#1a1a1a" },
+              { val: "$0", label: "Full Program Cost", icon: faHandHoldingDollar, color: "#dc2626" },
             ].map((s) => (
               <div
                 key={s.label}
                 className="rounded-xl p-6 text-center border-2 border-gray-100 hover:shadow-md transition-all duration-300"
               >
-                <div className="text-3xl mb-2">{s.icon}</div>
+                <div className="text-3xl mb-2" style={{ color: s.color }}><FontAwesomeIcon icon={s.icon} /></div>
                 <div className="text-3xl font-bold mb-1" style={{ color: s.color }}>
                   {s.val}
                 </div>
@@ -118,7 +120,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: "💻",
+                icon: faLaptop,
                 title: "The Digital Divide",
                 color: "#dc2626",
                 bg: "#fef2f2",
@@ -130,7 +132,7 @@ export default function AboutPage() {
                 ],
               },
               {
-                icon: "🗣️",
+                icon: faComments,
                 title: "The English Barrier",
                 color: "#00BCD4",
                 bg: "#e0f7fa",
@@ -142,7 +144,7 @@ export default function AboutPage() {
                 ],
               },
               {
-                icon: "🔢",
+                icon: faCalculator,
                 title: "Mathematical Illiteracy",
                 color: "#1a1a1a",
                 bg: "#f3f4f6",
@@ -163,7 +165,7 @@ export default function AboutPage() {
                   className="w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-5"
                   style={{ backgroundColor: card.color }}
                 >
-                  {card.icon}
+                  <FontAwesomeIcon icon={card.icon} className="text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
                   {card.title}
@@ -320,7 +322,7 @@ export default function AboutPage() {
                 className="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-5"
                 style={{ backgroundColor: "#dc2626" }}
               >
-                🔭
+                <FontAwesomeIcon icon={faEye} className="text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
               <p className="text-gray-300 leading-relaxed">
@@ -339,7 +341,7 @@ export default function AboutPage() {
                 className="w-12 h-12 rounded-xl flex items-center justify-center text-xl mb-5"
                 style={{ backgroundColor: "#00BCD4" }}
               >
-                🎯
+                <FontAwesomeIcon icon={faBullseye} className="text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
               <p className="text-gray-300 leading-relaxed">

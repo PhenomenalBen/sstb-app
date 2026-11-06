@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHandPointer } from "@fortawesome/free-solid-svg-icons"
 
 type Application = {
   id: number
@@ -143,7 +145,7 @@ export default function ApplicationsClient({
         <div className="sticky top-6">
           {!selected ? (
             <div className="bg-white rounded-xl border-2 border-dashed border-gray-200 p-12 text-center text-gray-400">
-              <div className="text-4xl mb-3">👆</div>
+              <div className="mb-3"><FontAwesomeIcon icon={faHandPointer} className="text-4xl text-gray-300" /></div>
               <p className="text-sm">Click an application to review it</p>
             </div>
           ) : (

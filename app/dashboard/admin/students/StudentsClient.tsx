@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGraduationCap, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 
 type Balance = {
   id: number
@@ -179,7 +181,7 @@ export default function StudentsClient({
         <div className="sticky top-6">
           {!selected ? (
             <div className="bg-white rounded-xl border-2 border-dashed border-gray-200 p-12 text-center text-gray-400">
-              <div className="text-4xl mb-3">🎓</div>
+              <div className="mb-3"><FontAwesomeIcon icon={faGraduationCap} className="text-4xl text-gray-300" /></div>
               <p className="text-sm">Click a student to view details</p>
             </div>
           ) : (
@@ -211,7 +213,7 @@ export default function StudentsClient({
                   className="text-xs font-semibold px-3 py-1.5 rounded-lg border-2 transition-all"
                   style={{ borderColor: "#dc2626", color: "#dc2626" }}
                 >
-                  ✏️ Edit
+                  <FontAwesomeIcon icon={faPenToSquare} className="mr-1" /> Edit
                 </button>
               </div>
 
