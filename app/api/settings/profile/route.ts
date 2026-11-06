@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import { auth } from "@/lib/auth"
+import { serverError } from "@/lib/security"
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
@@ -26,6 +27,6 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json({ success: true })
   } catch (err) {
-    return NextResponse.json({ error: String(err) }, { status: 500 })
+    return serverError("Update profile error", err)
   }
 }

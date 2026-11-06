@@ -2,22 +2,30 @@ import { NextRequest, NextResponse } from "next/server"
 import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import bcrypt from "bcryptjs"
+import { limitByIp, serverError, validatePassword } from "@/lib/security"
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
 
 export async function POST(req: NextRequest) {
-  const { token, password } = await req.json()
+  // 10 attempts per IP per 15 minutes
+  const limited = limitByIp(req, "reset-password", 10, 15 * 60 * 1000)
+  if (limited) return limited
 
-  if (!token || !password) {
+  let token: unknown, password: unknown
+  try {
+    ;({ token, password } = await req.json())
+  } catch {
+    return NextResponse.json({ error: "Invalid request body." }, { status: 400 })
+  }
+
+  if (!token || typeof token !== "string" || !password) {
     return NextResponse.json({ error: "Missing fields." }, { status: 400 })
   }
 
-  if (password.length < 8) {
-    return NextResponse.json(
-      { error: "Password must be at least 8 characters." },
-      { status: 400 }
-    )
+  const passwordError = validatePassword(password)
+  if (passwordError) {
+    return NextResponse.json({ error: passwordError }, { status: 400 })
   }
 
   try {
@@ -32,22 +40,23 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const hash = await bcrypt.hash(password, 12)
+    const hash = await bcrypt.hash(password as string, 12)
 
-    await prisma.user.update({
-      where: { email: record.email },
-      data: { password_hash: hash },
-    })
-
-    // Mark token as used
-    await prisma.passwordResetToken.update({
-      where: { token },
-      data: { used: true },
-    })
+    await prisma.$transaction([
+      // New password + bump token_version so every existing session is signed out.
+      prisma.user.update({
+        where: { email: record.email },
+        data: { password_hash: hash, token_version: { increment: 1 } },
+      }),
+      // Mark token as used
+      prisma.passwordResetToken.update({
+        where: { token },
+        data: { used: true },
+      }),
+    ])
 
     return NextResponse.json({ success: true })
   } catch (err) {
-    console.error("Reset password error:", err)
-    return NextResponse.json({ error: "Something went wrong." }, { status: 500 })
+    return serverError("Reset password error", err)
   }
 }

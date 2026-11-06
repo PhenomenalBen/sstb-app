@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { signOut } from "next-auth/react"
 
 type Props = {
   user: {
@@ -92,8 +93,12 @@ export default function SettingsClient({ user }: Props) {
         const data = await res.json()
         throw new Error(data.error || "Failed")
       }
-      setPasswordMsg({ type: "success", text: "Password changed successfully." })
+      setPasswordMsg({
+        type: "success",
+        text: "Password changed. For security, you will be signed out on all devices — please sign in again.",
+      })
       setPasswordForm({ current_password: "", new_password: "", confirm_password: "" })
+      setTimeout(() => signOut({ callbackUrl: "/login" }), 2500)
     } catch (err: any) {
       setPasswordMsg({ type: "error", text: err.message })
     }

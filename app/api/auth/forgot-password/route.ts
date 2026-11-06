@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import { Resend } from "resend"
 import crypto from "crypto"
+import { escapeHtml, limitByIp, rateLimit } from "@/lib/security"
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
@@ -20,9 +21,18 @@ function getResendClient() {
 }
 
 export async function POST(req: NextRequest) {
-  const { email } = await req.json()
+  // 5 requests per IP per 15 minutes
+  const limited = limitByIp(req, "forgot-password", 5, 15 * 60 * 1000)
+  if (limited) return limited
 
-  if (!email) {
+  let email: unknown
+  try {
+    ;({ email } = await req.json())
+  } catch {
+    return NextResponse.json({ error: "Invalid request body." }, { status: 400 })
+  }
+
+  if (!email || typeof email !== "string") {
     return NextResponse.json({ error: "Email is required." }, { status: 400 })
   }
 
@@ -31,6 +41,11 @@ export async function POST(req: NextRequest) {
 
     // Always return success even if user not found — security best practice
     if (!user) {
+      return NextResponse.json({ success: true })
+    }
+
+    // At most 3 reset emails per account per hour (response stays identical).
+    if (!rateLimit(`forgot-password-email:${email.toLowerCase()}`, 3, 60 * 60 * 1000)) {
       return NextResponse.json({ success: true })
     }
 
@@ -71,7 +86,7 @@ export async function POST(req: NextRequest) {
                 Reset Your Password
               </h2>
               <p style="color: #6b7280; font-size: 14px; line-height: 1.6;">
-                Hi ${user.name}, we received a request to reset your password.
+                Hi ${escapeHtml(user.name)}, we received a request to reset your password.
                 Click the button below to set a new password. This link expires in
                 <strong>1 hour</strong>.
               </p>

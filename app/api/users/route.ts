@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import { auth } from "@/lib/auth"
 import bcrypt from "bcryptjs"
+import { serverError, validatePassword } from "@/lib/security"
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
@@ -17,6 +18,15 @@ export async function POST(req: NextRequest) {
 
   if (!name || !email || !password) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+  }
+
+  if (!["admin", "volunteer"].includes(role)) {
+    return NextResponse.json({ error: "Invalid role" }, { status: 400 })
+  }
+
+  const passwordError = validatePassword(password)
+  if (passwordError) {
+    return NextResponse.json({ error: passwordError }, { status: 400 })
   }
 
   try {
@@ -49,7 +59,6 @@ export async function POST(req: NextRequest) {
       },
     }, { status: 201 })
   } catch (err) {
-    console.error(err)
-    return NextResponse.json({ error: String(err) }, { status: 500 })
+    return serverError("Create user error", err)
   }
 }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import { auth } from "@/lib/auth"
+import { serverError } from "@/lib/security"
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
 const prisma = new PrismaClient({ adapter })
@@ -31,6 +32,6 @@ export async function POST(req: NextRequest) {
     })
     return NextResponse.json({ success: true, post }, { status: 201 })
   } catch (err) {
-    return NextResponse.json({ error: String(err) }, { status: 500 })
+    return serverError("Create news post error", err)
   }
 }

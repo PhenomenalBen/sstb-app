@@ -55,15 +55,26 @@ export default function VolunteerApplicationsClient({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: action, ...extra }),
       })
-      if (!res.ok) throw new Error("Failed")
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error || "Something went wrong. Please try again.")
+      if (data.accountCreated) {
+        if (data.emailSent) {
+          alert("Volunteer accepted. A 'set your password' email has been sent to them (link valid for 3 days).")
+        } else if (data.setupUrl) {
+          window.prompt(
+            "Volunteer accepted, but the welcome email could not be sent. Copy this password setup link and share it with the volunteer (valid for 3 days):",
+            data.setupUrl
+          )
+        }
+      }
       setList((prev) =>
         prev.map((a) => (a.id === id ? { ...a, status: action } : a))
       )
       if (selected?.id === id)
         setSelected((prev) => (prev ? { ...prev, status: action } : null))
       setShowAcceptModal(false)
-    } catch {
-      alert("Something went wrong. Please try again.")
+    } catch (err: any) {
+      alert(err?.message || "Something went wrong. Please try again.")
     }
     setLoadingId(null)
   }
@@ -342,6 +353,9 @@ export default function VolunteerApplicationsClient({
                 />
                 <label htmlFor="createAccount" className="text-sm text-gray-700">
                   Create dashboard login account for this volunteer
+                  <span className="block text-xs text-gray-500 mt-0.5">
+                    They will receive an email link to set their own password.
+                  </span>
                 </label>
               </div>
 

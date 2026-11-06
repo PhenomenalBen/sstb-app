@@ -16,6 +16,7 @@ model User {
   password_hash  String
   role           String   // "admin" | "volunteer"
   volunteer_type String?  // "finance" | "other"
+  token_version  Int      @default(0) // bump to sign the user out everywhere
   created_at     DateTime @default(now())
 
   volunteer      Volunteer?

@@ -1,18 +1,38 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
+import { escapeHtml, limitByIp, serverError } from "@/lib/security"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 const sendFromName = process.env.RESEND_FROM_NAME ?? "SSTB Contact Form"
 const sendFromAddress = process.env.RESEND_FROM_EMAIL ?? "contact@ststephentechbridge.site"
 const contactRecipient = process.env.CONTACT_EMAIL ?? "ststephentechbridge@gmail.com"
 
+const LIMITS = { name: 100, email: 200, subject: 200, message: 5000 }
+
 export async function POST(request: NextRequest) {
+  // 5 messages per IP per 10 minutes
+  const limited = limitByIp(request, "contact", 5, 10 * 60 * 1000)
+  if (limited) return limited
+
   try {
-    const { name, email, subject, message } = await request.json()
+    const body = await request.json()
+    const name = typeof body.name === "string" ? body.name.trim() : ""
+    const email = typeof body.email === "string" ? body.email.trim() : ""
+    const subject = typeof body.subject === "string" ? body.subject.trim() : ""
+    const message = typeof body.message === "string" ? body.message.trim() : ""
 
     // Basic validation
     if (!name || !email || !subject || !message) {
       return NextResponse.json({ error: "All fields are required" }, { status: 400 })
+    }
+
+    if (
+      name.length > LIMITS.name ||
+      email.length > LIMITS.email ||
+      subject.length > LIMITS.subject ||
+      message.length > LIMITS.message
+    ) {
+      return NextResponse.json({ error: "One or more fields are too long" }, { status: 400 })
     }
 
     // Email validation
@@ -23,21 +43,25 @@ export async function POST(request: NextRequest) {
 
     const from = `${sendFromName} <${sendFromAddress}>`
 
-    // Send email
+    // Strip line breaks from the subject header.
+    const safeSubjectHeader = subject.replace(/[\r\n]+/g, " ")
+
+    // Send email — every user-supplied value is HTML-escaped.
     const { data, error } = await resend.emails.send({
       from,
       to: [contactRecipient],
-      subject: `SSTB Contact: ${subject}`,
+      replyTo: email,
+      subject: `SSTB Contact: ${safeSubjectHeader}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #dc2626;">New Contact Form Submission</h2>
           <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Subject:</strong> ${subject}</p>
+            <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+            <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
             <p><strong>Message:</strong></p>
             <div style="background: white; padding: 15px; border-radius: 4px; border-left: 4px solid #dc2626;">
-              ${message.replace(/\n/g, "<br>")}
+              ${escapeHtml(message).replace(/\n/g, "<br>")}
             </div>
           </div>
           <p style="color: #666; font-size: 14px;">
@@ -52,9 +76,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
     }
 
-    return NextResponse.json({ success: true, data })
+    return NextResponse.json({ success: true, id: data?.id })
   } catch (error) {
-    console.error("Contact API error:", error)
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+    return serverError("Contact API error", error)
   }
 }
