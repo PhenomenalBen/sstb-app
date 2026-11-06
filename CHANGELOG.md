@@ -6,8 +6,7 @@ All notable changes to the SSTB app are recorded here.
 
 ### ⚠️ Action required after deploying
 
-1. **Run the database migration**: `npx prisma migrate deploy`
-   (adds `User.token_version`; existing users keep working, existing sessions stay valid).
+1. **Database migration runs automatically**: `npm run build` is now `prisma migrate deploy && next build`, so every deploy applies pending migrations first (adds `User.token_version`; existing users and sessions keep working). `DATABASE_URL` must be available at build time on the host. If the migration fails, the build fails and the old version stays live.
 2. **Change the production admin password** if it is still `Admin@1234` (log in → Settings).
 3. **Any volunteer still using `Volunteer@1234` must change it** (or use "Forgot password").
 4. **New environment variables:**
