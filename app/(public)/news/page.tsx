@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faNewspaper } from "@fortawesome/free-solid-svg-icons"
 import { faLinkedinIn, faFacebook, faInstagram, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
@@ -54,7 +55,7 @@ export default async function NewsPage() {
         <div className="max-w-7xl mx-auto">
           {posts.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
-              <div className="text-5xl mb-4">📰</div>
+              <div className="mb-4"><FontAwesomeIcon icon={faNewspaper} className="text-5xl text-gray-300" /></div>
               <p className="text-lg font-medium">No posts yet. Check back soon!</p>
             </div>
           ) : (

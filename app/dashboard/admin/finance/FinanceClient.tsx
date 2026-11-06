@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowTrendDown, faArrowTrendUp, faHourglassHalf, faReceipt, faWallet } from "@fortawesome/free-solid-svg-icons"
 
 type Transaction = {
   id: number
@@ -128,9 +130,9 @@ export default function FinanceClient({
       {/* Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         {[
-          { label: "Total Received", value: `$${totalIn.toFixed(2)}`, icon: "💚", color: "#16a34a", bg: "#dcfce7" },
-          { label: "Total Spent", value: `$${totalOut.toFixed(2)}`, icon: "🔴", color: "#dc2626", bg: "#fee2e2" },
-          { label: "Total Balance Due", value: `$${totalDue.toFixed(2)}`, icon: "⏳", color: "#92400e", bg: "#fef3c7" },
+          { label: "Total Received", value: `$${totalIn.toFixed(2)}`, icon: faArrowTrendUp, color: "#16a34a", bg: "#dcfce7" },
+          { label: "Total Spent", value: `$${totalOut.toFixed(2)}`, icon: faArrowTrendDown, color: "#dc2626", bg: "#fee2e2" },
+          { label: "Total Balance Due", value: `$${totalDue.toFixed(2)}`, icon: faHourglassHalf, color: "#92400e", bg: "#fef3c7" },
         ].map((s) => (
           <div
             key={s.label}
@@ -140,7 +142,7 @@ export default function FinanceClient({
               className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
               style={{ backgroundColor: s.bg }}
             >
-              {s.icon}
+              <FontAwesomeIcon icon={s.icon} style={{ color: s.color }} />
             </div>
             <div>
               <p className="text-2xl font-bold" style={{ color: s.color }}>
@@ -165,9 +167,10 @@ export default function FinanceClient({
                 : { backgroundColor: "#f3f4f6", color: "#374151" }
             }
           >
+            <FontAwesomeIcon icon={t === "transactions" ? faReceipt : faWallet} className="mr-1.5" />
             {t === "transactions"
-              ? `💳 Transactions (${txList.length})`
-              : `💰 Balances (${balanceList.length})`}
+              ? `Transactions (${txList.length})`
+              : `Balances (${balanceList.length})`}
           </button>
         ))}
       </div>

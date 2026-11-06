@@ -3,6 +3,8 @@ import { redirect } from "next/navigation"
 import { PrismaClient } from "@prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBook, faGraduationCap, faHand } from "@fortawesome/free-solid-svg-icons"
 
 export const dynamic = "force-dynamic"
 
@@ -25,7 +27,7 @@ export default async function VolunteerDashboardPage() {
     <div>
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900">
-          Welcome, {(session.user as any)?.name?.split(" ")[0]} 👋
+          Welcome, {(session.user as any)?.name?.split(" ")[0]} <FontAwesomeIcon icon={faHand} className="text-amber-400" />
         </h1>
         <p className="text-gray-500 text-sm mt-1">
           Here's an overview of the current cohort.
@@ -35,8 +37,8 @@ export default async function VolunteerDashboardPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
         {[
-          { label: "Enrolled Students", value: totalStudents, icon: "🎓", color: "#dc2626" },
-          { label: "Active Courses", value: 3, icon: "📚", color: "#00BCD4" },
+          { label: "Enrolled Students", value: totalStudents, icon: faGraduationCap, color: "#dc2626" },
+          { label: "Active Courses", value: 3, icon: faBook, color: "#00BCD4" },
         ].map((s) => (
           <div
             key={s.label}
@@ -46,7 +48,7 @@ export default async function VolunteerDashboardPage() {
               className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl"
               style={{ backgroundColor: s.color + "15" }}
             >
-              {s.icon}
+              <FontAwesomeIcon icon={s.icon} style={{ color: s.color }} />
             </div>
             <div>
               <p className="text-3xl font-bold" style={{ color: s.color }}>
@@ -67,7 +69,7 @@ export default async function VolunteerDashboardPage() {
           className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl"
           style={{ backgroundColor: "#fef2f2" }}
         >
-          🎓
+          <FontAwesomeIcon icon={faGraduationCap} className="text-red-600" />
         </div>
         <div>
           <p className="font-semibold text-gray-800">View All Students</p>

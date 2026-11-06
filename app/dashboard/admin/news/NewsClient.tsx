@@ -1,6 +1,8 @@
 "use client"
 
 import { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faNewspaper, faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 type NewsPost = {
   id: number
@@ -134,7 +136,7 @@ export default function NewsClient({ posts }: { posts: NewsPost[] }) {
         <div className="flex flex-col gap-3">
           {list.length === 0 ? (
             <div className="bg-white rounded-xl border-2 border-dashed border-gray-200 p-10 text-center text-gray-400 text-sm">
-              <div className="text-4xl mb-3">📰</div>
+              <div className="mb-3"><FontAwesomeIcon icon={faNewspaper} className="text-4xl text-gray-300" /></div>
               <p>No posts yet. Click "+ New Post" to create one.</p>
             </div>
           ) : (
@@ -321,7 +323,7 @@ export default function NewsClient({ posts }: { posts: NewsPost[] }) {
           {/* View Panel */}
           {mode === "view" && !selected && (
             <div className="bg-white rounded-xl border-2 border-dashed border-gray-200 p-12 text-center text-gray-400">
-              <div className="text-4xl mb-3">📰</div>
+              <div className="mb-3"><FontAwesomeIcon icon={faNewspaper} className="text-4xl text-gray-300" /></div>
               <p className="text-sm">Click a post to view it or click "+ New Post"</p>
             </div>
           )}
@@ -352,14 +354,14 @@ export default function NewsClient({ posts }: { posts: NewsPost[] }) {
                     className="text-xs font-semibold px-3 py-1.5 rounded-lg border-2 transition-all"
                     style={{ borderColor: "#00BCD4", color: "#00BCD4" }}
                   >
-                    ✏️ Edit
+                    <FontAwesomeIcon icon={faPenToSquare} className="mr-1" /> Edit
                   </button>
                   <button
                     onClick={() => setDeleteConfirm(selected.id)}
                     className="text-xs font-semibold px-3 py-1.5 rounded-lg border-2 transition-all"
                     style={{ borderColor: "#dc2626", color: "#dc2626" }}
                   >
-                    🗑️ Delete
+                    <FontAwesomeIcon icon={faTrashCan} className="mr-1" /> Delete
                   </button>
                 </div>
               </div>
@@ -390,7 +392,7 @@ export default function NewsClient({ posts }: { posts: NewsPost[] }) {
       {deleteConfirm && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-2xl text-center">
-            <div className="text-4xl mb-3">🗑️</div>
+            <div className="mb-3"><FontAwesomeIcon icon={faTrashCan} className="text-4xl text-red-500" /></div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">Delete Post?</h3>
             <p className="text-sm text-gray-500 mb-6">
               This action cannot be undone.

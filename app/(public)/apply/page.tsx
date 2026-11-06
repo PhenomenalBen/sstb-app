@@ -4,6 +4,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAward, faCalendarDays, faCircleCheck, faMoneyBillWave } from "@fortawesome/free-solid-svg-icons"
 import { faLinkedinIn, faFacebook, faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 
 const courses = ["Computer Literacy", "Functional English", "Foundational Math"]
@@ -67,7 +68,7 @@ export default function ApplyPage() {
     return (
       <div className="min-h-screen flex items-center justify-center px-6" style={{ backgroundColor: "#f9fafb" }}>
         <div className="bg-white rounded-2xl p-12 text-center max-w-md w-full border-2 border-gray-100 shadow-lg">
-          <div className="text-6xl mb-4">🎉</div>
+          <div className="mb-4"><FontAwesomeIcon icon={faCircleCheck} className="text-6xl text-green-500" /></div>
           <h2 className="text-2xl font-bold text-gray-900 mb-3">
             Application Submitted!
           </h2>
@@ -122,12 +123,12 @@ export default function ApplyPage() {
             style={{ backgroundColor: "#1a1a2e" }}
           >
             {[
-              { icon: "📅", val: "6 Weeks", label: "Duration" },
-              { icon: "💰", val: "$90", label: "Program Fee" },
-              { icon: "🏅", val: "Certificate", label: "On Completion" },
+              { icon: faCalendarDays, val: "6 Weeks", label: "Duration" },
+              { icon: faMoneyBillWave, val: "$90", label: "Program Fee" },
+              { icon: faAward, val: "Certificate", label: "On Completion" },
             ].map((s) => (
               <div key={s.label}>
-                <div className="text-xl mb-0.5">{s.icon}</div>
+                <div className="text-xl mb-1 text-red-500"><FontAwesomeIcon icon={s.icon} /></div>
                 <div className="text-sm font-bold" style={{ color: "#00BCD4" }}>{s.val}</div>
                 <div className="text-xs text-gray-500">{s.label}</div>
               </div>

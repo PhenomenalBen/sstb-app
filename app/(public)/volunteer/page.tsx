@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHandsClapping } from "@fortawesome/free-solid-svg-icons"
+import { faCertificate, faEarthAfrica, faGlobe, faHandsClapping, faHeart, faLocationDot } from "@fortawesome/free-solid-svg-icons"
 
 const courseOptions = ["Computer Literacy", "Functional English", "Foundational Math", "None / General Support"]
 
@@ -123,12 +123,12 @@ export default function VolunteerPage() {
             style={{ backgroundColor: "#1a1a2e" }}
           >
             {[
-              { icon: "🌍", val: "Remote / Onsite", label: "Flexible Work" },
-              { icon: "❤️", val: "Community", label: "Driven Purpose" },
-              { icon: "📜", val: "Recognition", label: "Volunteer Cert" },
+              { icon: faEarthAfrica, val: "Remote / Onsite", label: "Flexible Work" },
+              { icon: faHeart, val: "Community", label: "Driven Purpose" },
+              { icon: faCertificate, val: "Recognition", label: "Volunteer Cert" },
             ].map((s) => (
               <div key={s.label}>
-                <div className="text-xl mb-0.5">{s.icon}</div>
+                <div className="text-xl mb-1 text-red-500"><FontAwesomeIcon icon={s.icon} /></div>
                 <div className="text-sm font-bold" style={{ color: "#00BCD4" }}>{s.val}</div>
                 <div className="text-xs text-gray-500">{s.label}</div>
               </div>
@@ -268,7 +268,7 @@ export default function VolunteerPage() {
                           : { backgroundColor: "#fff", borderColor: "#e5e7eb", color: "#374151" }
                       }
                     >
-                      {option === "Remote" ? "🌐 " : "📍 "}{option}
+                      <FontAwesomeIcon icon={option === "Remote" ? faGlobe : faLocationDot} className="mr-1.5" />{option}
                     </button>
                   ))}
                 </div>
