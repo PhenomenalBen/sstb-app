@@ -3,9 +3,10 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { signOut, useSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChartPie, faClipboardList, faGear, faGraduationCap, faHand, faHandshakeAngle, faNewspaper, faReceipt, faRightFromBracket, faUsers, faWallet } from "@fortawesome/free-solid-svg-icons"
+import { signOutAndRedirectToLogin } from "@/lib/client-auth"
 
 const adminLinks = [
   { label: "Overview", href: "/dashboard/admin", icon: faChartPie },
@@ -39,6 +40,20 @@ export default function DashboardLayout({
   const { data: session } = useSession()
   const pathname = usePathname()
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [signingOut, setSigningOut] = useState(false)
+  const [signOutError, setSignOutError] = useState("")
+
+  const handleSignOut = async () => {
+    setSigningOut(true)
+    setSignOutError("")
+    try {
+      await signOutAndRedirectToLogin()
+    } catch (error) {
+      console.error("Sign out failed:", error)
+      setSignOutError("Could not sign out. Please try again.")
+      setSigningOut(false)
+    }
+  }
 
   const role = (session?.user as any)?.role
   const volunteerType = (session?.user as any)?.volunteer_type
@@ -156,12 +171,18 @@ export default function DashboardLayout({
 
         {/* Sign out */}
         <div className="px-3 py-4 border-t" style={{ borderColor: "#ffffff15" }}>
+          {signOutError && (
+            <p role="alert" className="px-3 pb-2 text-xs text-red-300">
+              {signOutError}
+            </p>
+          )}
           <button
-            onClick={() => signOut({ callbackUrl: "/login" })}
-            className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-red-600/20 transition-all duration-200"
+            onClick={handleSignOut}
+            disabled={signingOut}
+            className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-red-600/20 transition-all duration-200 disabled:opacity-50"
           >
             <span className="w-5 text-center"><FontAwesomeIcon icon={faRightFromBracket} /></span>
-            Sign Out
+            {signingOut ? "Signing out..." : "Sign Out"}
           </button>
         </div>
       </aside>
