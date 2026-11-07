@@ -12,17 +12,17 @@ export default function PeoplePage() {
 
       {/* Hero */}
       <section
-        className="py-24 px-6 md:px-[5%] text-center"
+        className="page-hero py-24 px-6 md:px-[5%] text-center"
         style={{ background: "linear-gradient(135deg, #ffffff 0%, #fef2f2 100%)" }}
       >
         <div className="max-w-3xl mx-auto">
-          <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#00BCD4" }}>
+          <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#0e7490" }}>
             The People Behind SSTB
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             People & <span style={{ color: "#dc2626" }}>Contact</span>
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-700 leading-relaxed">
             Meet the volunteers and staff who make St Stephen Tech Bridge possible.
           </p>
         </div>
@@ -33,13 +33,13 @@ export default function PeoplePage() {
         <div className="max-w-7xl mx-auto">
 
           <div className="text-center mb-14">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#00BCD4" }}>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#0e7490" }}>
               Our Team
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               The People Who Make It Happen
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
+            <p className="text-gray-600 max-w-xl mx-auto">
               Every member of our team is a volunteer driven by a shared belief
               that education changes lives.
             </p>
@@ -75,7 +75,7 @@ export default function PeoplePage() {
                   <p className="text-sm font-semibold mb-3" style={{ color: "#dc2626" }}>
                     {member.role}
                   </p>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-5">{member.bio}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-5">{member.bio}</p>
 
                   {/* Socials */}
                   <div className="flex justify-center gap-2 flex-wrap">
@@ -131,10 +131,10 @@ export default function PeoplePage() {
             style={{ backgroundColor: "#f9fafb", border: "2px dashed #e5e7eb" }}
           >
             <div className="mb-3">
-              <FontAwesomeIcon icon={faHandsClapping} className="text-xs text-gray-600" style={{ fontSize: "0.85rem" }} />
+              <FontAwesomeIcon icon={faHandsClapping} className="text-xs text-gray-700" style={{ fontSize: "0.85rem" }} />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-2">Want to Join the Team?</h3>
-            <p className="text-gray-500 text-sm mb-5 max-w-md mx-auto">
+            <p className="text-gray-600 text-sm mb-5 max-w-md mx-auto">
               We are always looking for passionate volunteers.
             </p>
             <Link
@@ -152,11 +152,11 @@ export default function PeoplePage() {
       <section id="contact" className="py-20 px-6 md:px-[5%] scroll-mt-20" style={{ backgroundColor: "#f9fafb" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#00BCD4" }}>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#0e7490" }}>
               Get in Touch
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
+            <p className="text-gray-600 max-w-xl mx-auto">
               Have a question, want to partner with us, or need a service quote?
             </p>
           </div>
@@ -174,7 +174,7 @@ export default function PeoplePage() {
                     <FontAwesomeIcon icon={item.icon} style={{ color: item.color }} className="text-lg" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">{item.label}</p>
+                    <p className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-1">{item.label}</p>
                     {item.href ? (
                       <a href={item.href} className="text-sm font-medium hover:underline" style={{ color: item.color }}>
                         {item.value}
@@ -187,7 +187,7 @@ export default function PeoplePage() {
               ))}
 
               <div className="bg-white rounded-xl p-5 border-2 border-gray-100">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">Follow Us</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-4">Follow Us</p>
                 <div className="flex flex-wrap gap-3">
                   {[
                     { ...socialLinks[0], icon: faLinkedinIn },

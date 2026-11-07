@@ -9,17 +9,17 @@ export default function AboutPage() {
 
       {/* ── PAGE HERO ────────────────────────────────────────────────────── */}
       <section
-        className="py-24 px-6 md:px-[5%] text-center"
+        className="page-hero py-24 px-6 md:px-[5%] text-center"
         style={{ background: "linear-gradient(135deg, #ffffff 0%, #fef2f2 100%)" }}
       >
         <div className="max-w-3xl mx-auto">
-          <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#00BCD4" }}>
+          <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#0e7490" }}>
             Who We Are
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             About St Stephen <span style={{ color: "#dc2626" }}>Tech Bridge</span>
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-700 leading-relaxed">
             A grassroots educational initiative built on the belief that every
             young person, regardless of displacement, poverty, or background,
             deserves access to the skills of the modern world.
@@ -48,25 +48,25 @@ export default function AboutPage() {
         />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#00BCD4" }}>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#0e7490" }}>
               Overview
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               What is St Stephen Tech Bridge?
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-5">
+            <p className="text-gray-700 leading-relaxed mb-5">
               St Stephen Tech Bridge (SSTB) is a community-driven organisation
               founded to close the digital, linguistic, and mathematical literacy
               gap among displaced and underserved youth, primarily in South Sudan
               and Uganda.
             </p>
-            <p className="text-gray-600 leading-relaxed mb-5">
+            <p className="text-gray-700 leading-relaxed mb-5">
               Through a focused 6-week bootcamp, we train students in computer
               literacy, functional English, and foundational mathematics. Every
               graduate earns a certificate that opens doors to higher education
               and employment.
             </p>
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed">
               Beyond training, we offer affordable digital services to schools,
               NGOs, and small businesses, generating revenue that funds
               subsidised tuition for those who cannot afford even the modest
@@ -90,7 +90,7 @@ export default function AboutPage() {
                 <div className="text-3xl font-bold mb-1" style={{ color: s.color }}>
                   {s.val}
                 </div>
-                <div className="text-xs text-gray-500">{s.label}</div>
+                <div className="text-xs text-gray-600">{s.label}</div>
               </div>
             ))}
           </div>
@@ -105,13 +105,13 @@ export default function AboutPage() {
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#00BCD4" }}>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#0e7490" }}>
               The Challenge
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               The Problems We Are Solving
             </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Three interconnected barriers trap millions of young Africans in a
               cycle of missed opportunity. SSTB was built to break all three.
             </p>
@@ -172,7 +172,7 @@ export default function AboutPage() {
                 </h3>
                 <ul className="space-y-2">
                   {card.points.map((pt) => (
-                    <li key={pt} className="flex items-start gap-2 text-sm text-gray-600">
+                    <li key={pt} className="flex items-start gap-2 text-sm text-gray-700">
                       <span style={{ color: card.color }} className="mt-0.5 flex-shrink-0">▸</span>
                       {pt}
                     </li>
@@ -222,13 +222,13 @@ export default function AboutPage() {
         />
         <div className="max-w-7xl mx-auto">
           <div className="mb-14 text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#00BCD4" }}>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-2" style={{ color: "#0e7490" }}>
               The Solution
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               How we Respond
             </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Our model is simple, affordable, and designed specifically for the
               communities we serve.
             </p>
@@ -289,7 +289,7 @@ export default function AboutPage() {
                 >
                   {s.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{s.desc}</p>
+                <p className="text-gray-700 text-sm leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -325,7 +325,7 @@ export default function AboutPage() {
                 <FontAwesomeIcon icon={faEye} className="text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-200 leading-relaxed">
                 A generation of African youth, regardless of displacement,
                 poverty, or circumstance - who are digitally literate, confident
                 communicators, and active participants in the global economy.
@@ -344,7 +344,7 @@ export default function AboutPage() {
                 <FontAwesomeIcon icon={faBullseye} className="text-white" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-200 leading-relaxed">
                 To provide accessible, high-quality digital literacy, English, and
                 mathematics education to displaced and underserved youth in South
                 Sudan and Uganda - equipping them with the skills and
@@ -358,7 +358,7 @@ export default function AboutPage() {
             className="mt-10 rounded-xl p-6 text-center border"
             style={{ borderColor: "#dc262640", backgroundColor: "#ffffff08" }}
           >
-            <p className="text-gray-400 italic text-sm">
+            <p className="text-gray-300 italic text-sm">
               "In loving memory of{" "}
               <span className="text-white font-semibold">Stephen Riak</span>
               {" "}- whose dream of a better-educated, digitally empowered community
@@ -377,7 +377,7 @@ export default function AboutPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
             Be Part of the Story
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-gray-700 mb-8">
             Apply as a student, join as a volunteer, or support our work.
             Every contribution moves us closer to the vision.
           </p>

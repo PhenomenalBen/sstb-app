@@ -72,7 +72,7 @@ export default function ApplyPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-3">
             Application Submitted!
           </h2>
-          <p className="text-gray-500 text-sm leading-relaxed mb-6">
+          <p className="text-gray-600 text-sm leading-relaxed mb-6">
             Thank you for applying to St Stephen Tech Bridge. We have received
             your application and will get back to you within 48 hours.
           </p>
@@ -93,20 +93,20 @@ export default function ApplyPage() {
 
       {/* ── PAGE HERO ──────────────────────────────────────────────────── */}
       <section
-        className="py-20 px-6 md:px-[5%] text-center"
+        className="page-hero py-20 px-6 md:px-[5%] text-center"
         style={{ background: "linear-gradient(135deg, #ffffff 0%, #fef2f2 100%)" }}
       >
         <div className="max-w-2xl mx-auto">
           <p
             className="text-sm font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "#00BCD4" }}
+            style={{ color: "#0e7490" }}
           >
             Join the Bootcamp
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Student <span style={{ color: "#dc2626" }}>Application</span>
           </h1>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-700 leading-relaxed">
             Fill in the form below to apply for the 6-week bootcamp. We will
             review your application and get back to you within 48 hours.
           </p>
@@ -130,7 +130,7 @@ export default function ApplyPage() {
               <div key={s.label}>
                 <div className="text-xl mb-1 text-red-500"><FontAwesomeIcon icon={s.icon} /></div>
                 <div className="text-sm font-bold" style={{ color: "#00BCD4" }}>{s.val}</div>
-                <div className="text-xs text-gray-500">{s.label}</div>
+                <div className="text-xs text-gray-600">{s.label}</div>
               </div>
             ))}
           </div>
@@ -149,7 +149,7 @@ export default function ApplyPage() {
               {/* Name + Age */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                     Full Name <span style={{ color: "#dc2626" }}>*</span>
                   </label>
                   <input
@@ -161,7 +161,7 @@ export default function ApplyPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                     Age <span style={{ color: "#dc2626" }}>*</span>
                   </label>
                   <input
@@ -177,7 +177,7 @@ export default function ApplyPage() {
               {/* Email + Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                     Email Address <span style={{ color: "#dc2626" }}>*</span>
                   </label>
                   <input
@@ -189,9 +189,9 @@ export default function ApplyPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                     Phone Number{" "}
-                    <span className="text-gray-400 normal-case font-normal">(optional)</span>
+                    <span className="text-gray-600 normal-case font-normal">(optional)</span>
                   </label>
                   <input
                     type="tel"
@@ -205,7 +205,7 @@ export default function ApplyPage() {
 
               {/* Education */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Level of Education <span style={{ color: "#dc2626" }}>*</span>
                 </label>
                 <select
@@ -226,7 +226,7 @@ export default function ApplyPage() {
 
               {/* Courses */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-3">
                   Courses Applied For <span style={{ color: "#dc2626" }}>*</span>
                 </label>
                 <div className="flex flex-wrap gap-3">
@@ -253,7 +253,7 @@ export default function ApplyPage() {
 
               {/* Motivation */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Why Do You Want to Join? <span style={{ color: "#dc2626" }}>*</span>
                 </label>
                 <textarea
@@ -263,7 +263,7 @@ export default function ApplyPage() {
                   onChange={(e) => setForm({ ...form, motivation_text: e.target.value })}
                   className="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-red-400 transition-colors resize-none"
                 />
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Minimum 50 words. Around 300 words recommended — be as specific as possible.
 
                 </p>
@@ -279,7 +279,7 @@ export default function ApplyPage() {
                 {loading ? "Submitting..." : "Submit Application →"}
               </button>
 
-              <p className="text-xs text-gray-400 text-center">
+              <p className="text-xs text-gray-600 text-center">
                 Already a volunteer?{" "}
                 <Link href="/login" style={{ color: "#dc2626" }} className="font-semibold hover:underline">
                   Login here

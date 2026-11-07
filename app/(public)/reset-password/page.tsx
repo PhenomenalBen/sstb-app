@@ -76,8 +76,8 @@ function ResetPasswordForm() {
   if (validating) {
     return (
       <div className="text-center py-12">
-        <div className="mb-4"><FontAwesomeIcon icon={faSpinner} className="text-4xl text-gray-400 animate-spin" /></div>
-        <p className="text-gray-500 text-sm">Validating your reset link...</p>
+        <div className="mb-4"><FontAwesomeIcon icon={faSpinner} className="text-4xl text-gray-600 animate-spin" /></div>
+        <p className="text-gray-600 text-sm">Validating your reset link...</p>
       </div>
     )
   }
@@ -89,7 +89,7 @@ function ResetPasswordForm() {
         <h3 className="text-lg font-bold text-gray-900 mb-2">
           Invalid or Expired Link
         </h3>
-        <p className="text-sm text-gray-500 mb-6">
+        <p className="text-sm text-gray-600 mb-6">
           This reset link is invalid or has already been used.
           Please request a new one.
         </p>
@@ -113,10 +113,10 @@ function ResetPasswordForm() {
         <h3 className="text-lg font-bold text-gray-900 mb-2">
           Password Reset!
         </h3>
-        <p className="text-sm text-gray-500 mb-2">
+        <p className="text-sm text-gray-600 mb-2">
           Your password has been updated successfully.
         </p>
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-gray-600">
           Redirecting to login in 3 seconds...
         </p>
       </div>
@@ -136,7 +136,7 @@ function ResetPasswordForm() {
         { label: "Confirm Password", key: "confirm", show: showConfirm, toggle: () => setShowConfirm(!showConfirm) },
       ].map((field) => (
         <div key={field.key}>
-          <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
             {field.label}
           </label>
           <div className="relative">
@@ -150,7 +150,7 @@ function ResetPasswordForm() {
             <button
               type="button"
               onClick={field.toggle}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-400 hover:text-gray-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-600 hover:text-gray-700"
             >
               {field.show ? "HIDE" : "SHOW"}
             </button>
@@ -169,7 +169,7 @@ function ResetPasswordForm() {
 
       <Link
         href="/login"
-        className="text-center text-sm text-gray-400 hover:text-gray-600 transition-colors"
+        className="text-center text-sm text-gray-600 hover:text-gray-700 transition-colors"
       >
         ← Back to Login
       </Link>
@@ -201,14 +201,14 @@ export default function ResetPasswordPage() {
             style={{ borderColor: "#f3f4f6", backgroundColor: "#fafafa" }}
           >
             <h2 className="text-lg font-bold text-gray-900">Reset Password</h2>
-            <p className="text-sm text-gray-500 mt-0.5">
+            <p className="text-sm text-gray-600 mt-0.5">
               Enter your new password below.
             </p>
           </div>
 
           <div className="p-8">
             <Suspense fallback={
-              <div className="text-center py-8 text-gray-400 text-sm">Loading...</div>
+              <div className="text-center py-8 text-gray-600 text-sm">Loading...</div>
             }>
               <ResetPasswordForm />
             </Suspense>
