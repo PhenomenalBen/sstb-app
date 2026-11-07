@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### Supabase database URLs
+
+Configure both variables in Vercel (and locally when running migrations):
+
+- `DATABASE_URL`: the app's runtime connection. The Supabase transaction pooler on port `6543` is suitable for serverless runtime connections.
+- `DIRECT_URL`: used by `prisma migrate deploy`. Use the Supabase session pooler on port `5432` or a direct database connection; do not use the transaction pooler on port `6543` for migrations.
+
+After adding `DIRECT_URL` in Vercel, redeploy so the build can apply pending migrations.

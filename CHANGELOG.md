@@ -6,12 +6,13 @@ All notable changes to the SSTB app are recorded here.
 
 ### ⚠️ Action required after deploying
 
-1. **Database migration runs automatically**: `npm run build` is now `prisma migrate deploy && next build`, so every deploy applies pending migrations first (adds `User.token_version`; existing users and sessions keep working). `DATABASE_URL` must be available at build time on the host. If the migration fails, the build fails and the old version stays live.
+1. **Database migration runs automatically**: `npm run build` is now `prisma migrate deploy && next build`, so every deploy applies pending migrations first (adds `User.token_version`; existing users and sessions keep working). `DIRECT_URL` must be available at build time for Prisma migrations; use the Supabase session pooler (port 5432) or a direct connection, not the transaction pooler (port 6543). Keep `DATABASE_URL` for the app's runtime connection. If a migration fails, the build fails and the old version stays live.
 2. **Change the production admin password** if it is still `Admin@1234` (log in → Settings).
 3. **Any volunteer still using `Volunteer@1234` must change it** (or use "Forgot password").
 4. **New environment variables:**
    | Variable | Where | Purpose |
    |---|---|---|
+   | `DIRECT_URL` | production host / local migrations | Supabase session pooler on port 5432 or direct database URL for Prisma migrations. |
    | `SEED_ADMIN_PASSWORD` | only when running `npm run seed` | Initial admin password (min 12 chars). Required now. |
    | `SEED_ADMIN_EMAIL`, `SEED_ADMIN_NAME` | optional, seed only | Override the default admin email/name. |
    | `DEV_ALLOWED_ORIGINS` | optional, `.env.local` | Comma-separated IPs allowed to reach `next dev` (replaces the hardcoded `172.23.224.1`). |
