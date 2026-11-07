@@ -60,7 +60,7 @@ export default function ForgotPasswordPage() {
             style={{ borderColor: "#f3f4f6", backgroundColor: "#fafafa" }}
           >
             <h2 className="text-lg font-bold text-gray-900">Forgot Password</h2>
-            <p className="text-sm text-gray-500 mt-0.5">
+            <p className="text-sm text-gray-600 mt-0.5">
               Enter your email and we will send you a reset link.
             </p>
           </div>
@@ -72,7 +72,7 @@ export default function ForgotPasswordPage() {
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
                   Check your inbox
                 </h3>
-                <p className="text-sm text-gray-500 mb-6 leading-relaxed">
+                <p className="text-sm text-gray-600 mb-6 leading-relaxed">
                   If an account exists for{" "}
                   <span className="font-semibold text-gray-700">{email}</span>,
                   you will receive a password reset link shortly.
@@ -94,7 +94,7 @@ export default function ForgotPasswordPage() {
                 )}
 
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                     Email Address
                   </label>
                   <input
@@ -118,7 +118,7 @@ export default function ForgotPasswordPage() {
 
                 <Link
                   href="/login"
-                  className="text-center text-sm text-gray-400 hover:text-gray-600 transition-colors"
+                  className="text-center text-sm text-gray-600 hover:text-gray-700 transition-colors"
                 >
                   ← Back to Login
                 </Link>

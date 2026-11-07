@@ -67,12 +67,12 @@ export default function VolunteerPage() {
       <div className="min-h-screen flex items-center justify-center px-6" style={{ backgroundColor: "#f9fafb" }}>
         <div className="bg-white rounded-2xl p-12 text-center max-w-md w-full border-2 border-gray-100 shadow-lg">
           <div className="mb-4">
-            <FontAwesomeIcon icon={faHandsClapping} className="text-6xl text-gray-600" />
+            <FontAwesomeIcon icon={faHandsClapping} className="text-6xl text-gray-700" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-3">
             Application Received!
           </h2>
-          <p className="text-gray-500 text-sm leading-relaxed mb-6">
+          <p className="text-gray-600 text-sm leading-relaxed mb-6">
             Thank you for your interest in volunteering with St Stephen Tech
             Bridge. We will review your application and reach out within 48 hours.
           </p>
@@ -93,20 +93,20 @@ export default function VolunteerPage() {
 
       {/* ── PAGE HERO ──────────────────────────────────────────────────── */}
       <section
-        className="py-20 px-6 md:px-[5%] text-center"
+        className="page-hero py-20 px-6 md:px-[5%] text-center"
         style={{ background: "linear-gradient(135deg, #ffffff 0%, #e0f7fa 100%)" }}
       >
         <div className="max-w-2xl mx-auto">
           <p
             className="text-sm font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "#00BCD4" }}
+            style={{ color: "#0e7490" }}
           >
             Join the Team
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Volunteer <span style={{ color: "#00BCD4" }}>Application</span>
           </h1>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-700 leading-relaxed">
             Share your skills and time with students who need it most.
             Fill in the form below and we will get back to you within 48 hours.
           </p>
@@ -130,7 +130,7 @@ export default function VolunteerPage() {
               <div key={s.label}>
                 <div className="text-xl mb-1 text-red-500"><FontAwesomeIcon icon={s.icon} /></div>
                 <div className="text-sm font-bold" style={{ color: "#00BCD4" }}>{s.val}</div>
-                <div className="text-xs text-gray-500">{s.label}</div>
+                <div className="text-xs text-gray-600">{s.label}</div>
               </div>
             ))}
           </div>
@@ -148,7 +148,7 @@ export default function VolunteerPage() {
 
               {/* Name */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Full Name <span style={{ color: "#dc2626" }}>*</span>
                 </label>
                 <input
@@ -163,7 +163,7 @@ export default function VolunteerPage() {
               {/* Email + Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                     Email Address <span style={{ color: "#dc2626" }}>*</span>
                   </label>
                   <input
@@ -175,9 +175,9 @@ export default function VolunteerPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                     Phone{" "}
-                    <span className="text-gray-400 normal-case font-normal">(optional)</span>
+                    <span className="text-gray-600 normal-case font-normal">(optional)</span>
                   </label>
                   <input
                     type="tel"
@@ -191,7 +191,7 @@ export default function VolunteerPage() {
 
               {/* Education */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Level of Education <span style={{ color: "#dc2626" }}>*</span>
                 </label>
                 <select
@@ -211,7 +211,7 @@ export default function VolunteerPage() {
 
               {/* Skills */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Skills & Background <span style={{ color: "#dc2626" }}>*</span>
                 </label>
                 <textarea
@@ -225,7 +225,7 @@ export default function VolunteerPage() {
 
               {/* Preferred Courses */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-3">
                   Preferred Course / Area <span style={{ color: "#dc2626" }}>*</span>
                 </label>
                 <div className="flex flex-wrap gap-3">
@@ -252,7 +252,7 @@ export default function VolunteerPage() {
 
               {/* Availability */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-3">
                   Availability <span style={{ color: "#dc2626" }}>*</span>
                 </label>
                 <div className="flex gap-4">
@@ -276,7 +276,7 @@ export default function VolunteerPage() {
 
               {/* Motivation */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
                   Why Do You Want to Volunteer? <span style={{ color: "#dc2626" }}>*</span>
                 </label>
                 <textarea
@@ -286,7 +286,7 @@ export default function VolunteerPage() {
                   onChange={(e) => setForm({ ...form, motivation_text: e.target.value })}
                   className="w-full border-2 border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-cyan-400 transition-colors resize-none"
                 />
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-gray-600 mt-1">
                   Minimum 50 words. Around 300 words recommended.
                 </p>
               </div>
@@ -301,7 +301,7 @@ export default function VolunteerPage() {
                 {loading ? "Submitting..." : "Submit Volunteer Application →"}
               </button>
 
-              <p className="text-xs text-gray-400 text-center">
+              <p className="text-xs text-gray-600 text-center">
                 Want to enroll as a student instead?{" "}
                 <Link href="/apply" style={{ color: "#dc2626" }} className="font-semibold hover:underline">
                   Apply here

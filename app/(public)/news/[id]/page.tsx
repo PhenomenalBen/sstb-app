@@ -61,7 +61,7 @@ export default async function NewsDetailPage({
               >
                 {post.category}
               </span>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-600">
                 {new Date(post.published_at).toLocaleDateString("en-US", {
                   year: "numeric", month: "long", day: "numeric",
                 })}
@@ -73,7 +73,7 @@ export default async function NewsDetailPage({
             </h1>
 
             <p
-              className="text-base text-gray-600 leading-relaxed mb-6 p-4 rounded-xl italic border-l-4"
+              className="text-base text-gray-700 leading-relaxed mb-6 p-4 rounded-xl italic border-l-4"
               style={{ borderColor: categoryColor, backgroundColor: "#f9fafb" }}
             >
               {post.summary}

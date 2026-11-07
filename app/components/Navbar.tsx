@@ -104,8 +104,8 @@ export default function Navbar() {
           position: relative;
           display: block;
           padding: 8px 0;
-          font-size: 0.875rem;
-          font-weight: 500;
+          font-size: 0.95rem;
+          font-weight: 600;
           color: #1f2937;
           text-decoration: none;
           transition: color 0.2s ease;
@@ -119,7 +119,7 @@ export default function Navbar() {
         .dropdown a {
           display: block;
           padding: 10px 20px;
-          font-size: 0.875rem;
+          font-size: 0.9375rem;
           font-weight: 500;
           color: #374151;
           text-decoration: none;
@@ -133,7 +133,7 @@ export default function Navbar() {
       `}</style>
 
       <nav
-        className="fixed w-full top-0 z-50 bg-white transition-all duration-300"
+        className="animate-nav-drop fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md transition-all duration-300"
         style={{
           boxShadow: scrolled
             ? "0 4px 20px rgba(0,0,0,0.15)"
@@ -153,8 +153,8 @@ export default function Navbar() {
               className="rounded-full"
             />
             <span
-              className="font-bold text-lg leading-tight hidden sm:block"
-              style={{ color: "#dc2626" }}
+              className="font-extrabold text-xl leading-tight tracking-tight hidden sm:block"
+              style={{ fontFamily: "var(--font-jakarta)", color: "#dc2626" }}
             >
               St Stephen{" "}
               <span style={{ color: "#00BCD4" }}>Tech Bridge</span>
@@ -186,7 +186,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/volunteer"
-              className="text-sm font-semibold px-4 py-2 rounded-lg border-2 transition-all duration-300"
+              className="whitespace-nowrap text-sm font-semibold px-4 py-2.5 rounded-xl border-2 transition-all duration-300"
               style={{ borderColor: "#00BCD4", color: "#00BCD4" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.backgroundColor = "#00BCD4"
@@ -201,7 +201,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/apply"
-              className="text-sm font-semibold px-4 py-2 rounded-lg text-white transition-all duration-300"
+              className="whitespace-nowrap text-sm font-semibold px-4 py-2.5 rounded-xl text-white transition-all duration-300"
               style={{ backgroundColor: "#dc2626" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.backgroundColor = "#b91c1c"
@@ -218,7 +218,7 @@ export default function Navbar() {
             </Link>
             <Link
               href="/login"
-              className="text-sm font-semibold px-4 py-2 rounded-lg border-2 transition-all duration-300"
+              className="whitespace-nowrap text-sm font-semibold px-4 py-2.5 rounded-xl border-2 transition-all duration-300"
               style={{ borderColor: "#dc2626", color: "#dc2626" }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.backgroundColor = "#dc2626"

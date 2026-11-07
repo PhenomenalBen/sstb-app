@@ -33,17 +33,17 @@ export default async function NewsPage() {
 
       {/* Hero */}
       <section
-        className="py-24 px-6 md:px-[5%] text-center"
+        className="page-hero py-24 px-6 md:px-[5%] text-center"
         style={{ background: "linear-gradient(135deg, #ffffff 0%, #fef2f2 100%)" }}
       >
         <div className="max-w-3xl mx-auto">
-          <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#00BCD4" }}>
+          <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#0e7490" }}>
             Stay Informed
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             News & <span style={{ color: "#dc2626" }}>Updates</span>
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-700 leading-relaxed">
             The latest announcements, cohort news, and stories from the
             St Stephen Tech Bridge community.
           </p>
@@ -54,7 +54,7 @@ export default async function NewsPage() {
       <section className="py-16 px-6 md:px-[5%] bg-white">
         <div className="max-w-7xl mx-auto">
           {posts.length === 0 ? (
-            <div className="text-center py-20 text-gray-400">
+            <div className="text-center py-20 text-gray-600">
               <div className="mb-4"><FontAwesomeIcon icon={faNewspaper} className="text-5xl text-gray-300" /></div>
               <p className="text-lg font-medium">No posts yet. Check back soon!</p>
             </div>
@@ -81,14 +81,14 @@ export default async function NewsPage() {
                         >
                           {post.category}
                         </span>
-                        <span className="text-xs text-gray-400">
+                        <span className="text-xs text-gray-600">
                           {new Date(post.published_at).toLocaleDateString()}
                         </span>
                       </div>
                       <h3 className="text-lg font-bold text-gray-900 mb-3 leading-snug">
                         {post.title}
                       </h3>
-                      <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                      <p className="text-sm text-gray-700 leading-relaxed mb-4">
                         {post.summary}
                       </p>
                       <Link
@@ -113,7 +113,7 @@ export default async function NewsPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
             Never Miss an Update
           </h2>
-          <p className="text-gray-400 mb-8 text-sm">
+          <p className="text-gray-200 mb-8 text-sm">
             Follow us on social media to stay connected with the SSTB community.
           </p>
           <div className="flex flex-wrap justify-center gap-4">

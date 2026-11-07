@@ -44,7 +44,7 @@ export default function ContactForm() {
           <FontAwesomeIcon icon={faCircleCheck} className="text-5xl text-green-500" />
         </div>
         <h3 className="text-xl font-bold text-gray-900 mb-2">Message Sent!</h3>
-        <p className="text-gray-500 text-sm mb-6">
+        <p className="text-gray-600 text-sm mb-6">
           Thank you for reaching out. We will get back to you within 24–48 hours.
         </p>
         <button
@@ -71,7 +71,7 @@ export default function ContactForm() {
       <div className="flex flex-col gap-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
               Full Name
             </label>
             <input
@@ -83,7 +83,7 @@ export default function ContactForm() {
             />
           </div>
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
               Email
             </label>
             <input
@@ -97,7 +97,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
             Subject
           </label>
           <input
@@ -110,7 +110,7 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1.5">
             Message
           </label>
           <textarea
@@ -131,7 +131,7 @@ export default function ContactForm() {
           {loading ? "Sending..." : "Send Message →"}
         </button>
 
-        <p className="text-xs text-gray-400 text-center">
+        <p className="text-xs text-gray-600 text-center">
           We typically respond within 24–48 hours.
         </p>
       </div>

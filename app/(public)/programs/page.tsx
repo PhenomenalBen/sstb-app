@@ -9,13 +9,13 @@ export default function ProgramsPage() {
 
       {/* ── PAGE HERO ────────────────────────────────────────────────────── */}
       <section
-        className="py-24 px-6 md:px-[5%] text-center"
+        className="page-hero py-24 px-6 md:px-[5%] text-center"
         style={{ background: "linear-gradient(135deg, #ffffff 0%, #fef2f2 100%)" }}
       >
         <div className="max-w-3xl mx-auto">
           <p
             className="text-sm font-semibold uppercase tracking-widest mb-3"
-            style={{ color: "#00BCD4" }}
+            style={{ color: "#0e7490" }}
           >
             What We Offer
           </p>
@@ -23,7 +23,7 @@ export default function ProgramsPage() {
             Programs &{" "}
             <span style={{ color: "#dc2626" }}>Services</span>
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-700 leading-relaxed">
             We train students through our 6-week bootcamp and offer affordable
             digital services to organisations and individuals in our community.
           </p>
@@ -53,14 +53,14 @@ export default function ProgramsPage() {
           <div className="text-center mb-14">
             <p
               className="text-sm font-semibold uppercase tracking-widest mb-2"
-              style={{ color: "#00BCD4" }}
+              style={{ color: "#0e7490" }}
             >
               Training
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Programs
             </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               A focused 6-week bootcamp covering three essential disciplines.
               Every student who completes the program earns a certificate.
             </p>
@@ -163,7 +163,7 @@ export default function ProgramsPage() {
                     {prog.modules.map((mod) => (
                       <li
                         key={mod}
-                        className="flex items-start gap-2 text-sm text-gray-600"
+                        className="flex items-start gap-2 text-sm text-gray-700"
                       >
                         <span style={{ color: prog.color }} className="flex-shrink-0 mt-0.5">▸</span>
                         {mod}
@@ -193,7 +193,7 @@ export default function ProgramsPage() {
                 >
                   {info.val}
                 </div>
-                <div className="text-sm text-gray-400">{info.label}</div>
+                <div className="text-sm text-gray-300">{info.label}</div>
               </div>
             ))}
           </div>
@@ -211,14 +211,14 @@ export default function ProgramsPage() {
           <div className="text-center mb-14">
             <p
               className="text-sm font-semibold uppercase tracking-widest mb-2"
-              style={{ color: "#00BCD4" }}
+              style={{ color: "#0e7490" }}
             >
               Commercial Services
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our Services
             </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               We offer affordable digital services to schools, NGOs, and
               businesses. Revenue from these services directly funds subsidised
               student fees, so every project you give us helps train a student.
@@ -304,14 +304,14 @@ export default function ProgramsPage() {
 
                 {/* Body */}
                 <div className="p-6">
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                  <p className="text-sm text-gray-700 leading-relaxed mb-4">
                     {svc.desc}
                   </p>
                   <ul className="space-y-1">
                     {svc.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-center gap-2 text-sm text-gray-500"
+                        className="flex items-center gap-2 text-sm text-gray-600"
                       >
                         <span style={{ color: svc.color }}>✓</span>
                         {item}
@@ -331,7 +331,7 @@ export default function ProgramsPage() {
             <h3 className="text-2xl font-bold text-white mb-3">
               Need Any of These Services?
             </h3>
-            <p className="text-gray-400 mb-6 max-w-xl mx-auto text-sm">
+            <p className="text-gray-200 mb-6 max-w-xl mx-auto text-sm">
               Get in touch and we will provide a free quote. Every service you
               purchase helps fund a student's education.
             </p>
@@ -355,7 +355,7 @@ export default function ProgramsPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
             Ready to Join the Bootcamp?
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-gray-700 mb-8">
             Applications are open. Fill in a short form and our team will
             get back to you within 48 hours.
           </p>
